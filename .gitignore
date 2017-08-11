@@ -1,0 +1,30 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+.netrwhist
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+bash/extras
+*~
+.DS_Store
+npm-debug.log
+node_modules
+.config/yarn/global/
+.config/.mono/
+.config/gatsby/
+.config/simle-update-notifier/
+.config/github-copilot/
+.config/gh/
+.config/configstore/
+.config/btop/
+.config/htop/
+rewatch.lock
