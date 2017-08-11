@@ -1,0 +1,31 @@
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/rwjpeelen/.gitignore_global
+	autocrlf = false
+	ignorecase = false
+	sparseCheckout = false
+[user]
+	name = Roland Peelen
+	email = roland@peppr.nl
+	signingkey = C4767F3BD8F4ACF1
+[push]
+	default = upstream
+	autoSetupRemote = true
+[commit]
+	template = ~/.stdCommitMessage
+	gpgsign = true
+[init]
+	defaultBranch = master
+[pull]
+	ff = only
+[merge]
+	conflictstyle = diff3
+[diff]
+	external = difft
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
