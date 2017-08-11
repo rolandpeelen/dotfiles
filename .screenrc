@@ -1,0 +1,10 @@
+startup_message off
+
+hardstatus alwayslastline '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f%t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{y}][%{G} %l%{y}] %{y}[%{G} %m/%d %c %{y}]%{W}'
+
+vbell off
+autodetach on
+defscrollback 2048
+defutf8 on
+nonblock on
+

@@ -1,0 +1,14 @@
+snippet httprequest
+	var deferred = $q.defer();
+
+	$http({
+		method: '${1:GET}',
+		url: '${2:http}://${3:url.to.api}',
+	}).then(function(result) {
+		deferred.resolve(result);
+	}, function(error) {
+		deferred.reject(error);
+	});
+
+	return deferred.promise;
+endsnippet

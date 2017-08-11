@@ -1,0 +1,24 @@
+snippet ngroute
+	(function() {
+		'use strict';
+
+		angular
+			.module('app.${1:module}')
+			.config(config);
+
+		/* @ngInject */
+		function config($stateProvider) {
+			$stateProvider
+				.state('$1', {
+					url: '${2:url}',
+					views: {
+						'': {
+							controller: '${3:Module}Controller',
+							controllerAs: 'vm',
+							templateUrl: 'app/$1/$1.view.html',
+						},
+					},
+				});
+		}
+	})();
+endsnippet

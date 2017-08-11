@@ -1,0 +1,16 @@
+## Heroku Toolbelt
+PATH="/usr/local/heroku/bin:$PATH"
+
+## compose for php stuff
+PATH="~/.composer/vendor/bin:$PATH"
+
+## Ensure /usr/local/bin before /usr/bin for Homebrew
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+## Put ~/bin before everything
+PATH="~/bin:$PATH"
+
+## Add $GOPATH/bin to $PATH
+PATH="$PATH:$GOPATH/bin"
+
+export PATH

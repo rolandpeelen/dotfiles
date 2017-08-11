@@ -1,0 +1,39 @@
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Add colours to regular ls
+alias ls='ls -G'
+
+# Long ls, with colours
+alias ll='ls -lG'
+
+#Long ls, with colours, including "hidden" files
+alias la='ls -laG'
+
+# "Secure" some potentially dangerous commands
+alias rm='rm -vi'
+alias cp='cp -vi'
+alias mv='mv -vi'
+
+# Always display disk space in human readable form
+alias du='du -h'
+alias df='df -h'
+
+# Reload .bashrc if you change anything
+alias reload='echo "Reloading bash environment" ; . ~/.bashrc && echo "bash environment reloaded"'
+
+# Generate a valid mac address
+alias genmac='openssl rand -hex 6 | sed "s/\(..\)/\1:/g; s/.$//"'
+alias spoofmac='oldmac=$(ifconfig en0 | grep ether | sed "s/\W*ether //") ; newmac=$(genmac) ;  echo "oldmac: ${oldmac} | newmac: ${newmac}" ; sudo ifconfig en0 ether ${newmac} ; ifconfig en0'
+
+# View HTTP traffic
+alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+    alias "$method"="PERL_LWP_SSL_VERIFY_HOSTNAME=0 lwp-request -s -E -m '$method'"
+done
+
+# Start http server in directory
+alias https='python -m SimpleHTTPServer 8000'

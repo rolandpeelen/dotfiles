@@ -1,0 +1,23 @@
+snippet db
+	CREATE SCHEMA ${1:schema};
+snippet ct
+	CREATE TABLE \`${1:table}\` (
+	) ENGINE=${2:InnoDB} DEFAULT CHARSET=${3:utf8};
+snippet pk
+	\`${1:id}\` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+snippet field
+	\`${1:field}\` ${2:type}, 
+snippet vc
+	\`${1:field}\` varchar(${2:255}),
+snippet int
+	\`${1:field}\` int(${2:11}),
+snippet cat
+	\`${1:created_at}\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+snippet mod
+	\`${1:modified_at}\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+snippet insert
+	INSERT INTO \`${1:table}\` (\`$2\`) VALUES (${3:value});
+snippet update
+	UPDATE \`${1:table}\` SET \`$2\` = ${3:value} WHERE ${4};
+snippet select
+	SELECT ${1:*} FROM \`${2:table}\`;
