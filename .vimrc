@@ -126,15 +126,6 @@ retab!
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-    set nobackup      " do not keep a backup file, use versions instead
-else
-    set backup        " keep a backup file
-    set backupdir=~/.vim_backup
-    let my_backup = strftime("%y%m%d-%H%M")
-    let my_backup = "set backupext=_". my_backup
-    execute my_backup
-endif
 set backupskip=/tmp/*,/private/tmp/*"
 set history=50      " keep 50 lines of command line history
 set ruler       " show the cursor position all the time
