@@ -82,7 +82,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
-
+Plugin 'kaicataldo/material.vim'
+Plugin 'leafgarland/typescript-vim'
+" Material Theme Configuration 
+let g:material_theme_style = 'dark'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -247,15 +250,24 @@ map man <ESC>:!man
 " Hide some files
 let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$'
 
+
+" Material Theme Configuration 
+let g:material_theme_style = 'dark'
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-    colorscheme alduin
+    "colorscheme alduin
     "colorscheme jellybeans
-    "  set background=dark
+    colorscheme material
+    set background=dark
     syntax on
     set hlsearch
 endif
+
 
 " Syntastic stuff
 " tidy html5, instead of 2006 version
