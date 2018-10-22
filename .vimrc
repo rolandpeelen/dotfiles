@@ -84,8 +84,8 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'kaicataldo/material.vim'
 Plugin 'leafgarland/typescript-vim'
-" Material Theme Configuration 
-let g:material_theme_style = 'dark'
+Plugin 'kien/ctrlp'
+Plugin 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -283,3 +283,9 @@ let g:used_javascript_libs = 'underscore,lodash,angularjs,angularuirouter'
 
 " Rainbow parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+" Material Theme Configuration 
+let g:material_theme_style = 'dark'
+" NerdTree Toggle
+map <C-n> :NERDTreeToggle<CR>
+
