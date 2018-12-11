@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/rolandpeelen/Git/next/CD.Next.UI.Web/src/app'
 let g:netrw_dirhist_2='/Users/rolandpeelen/Git/next/CD.Next.UI.Web/src/app/tasks'
 let g:netrw_dirhist_3='/Users/rolandpeelen/Git/next/CD.Next.UI.Web/src/app/tasks/task-aside'
 let g:netrw_dirhist_4='/Users/rolandpeelen/Git/next/CD.Next.UI.Web/src/app/tasks/task-aside/aside-current-tasks'
 let g:netrw_dirhist_5='/Users/rolandpeelen/Git/next/CD.Next.UI.Web'
 let g:netrw_dirhist_6='/Users/rolandpeelen/Git/next/CD.Next.UI.Web/src'
+let g:netrw_dirhist_7='/Users/rolandpeelen/Git/konfig/KONFIG_api/app/user'

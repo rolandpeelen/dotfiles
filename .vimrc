@@ -84,8 +84,8 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'kaicataldo/material.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'kien/ctrlp'
 Plugin 'scrooloose/nerdtree'
+Plugin 'prettier/vim-prettier'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
