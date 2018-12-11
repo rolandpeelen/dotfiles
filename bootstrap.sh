@@ -6,25 +6,7 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-read -p "Hostname for machine: " hostname
-read -p "Your name: " name
-read -p "Your email: " email
-
-sudo scutil --set HostName ${hostname}.local
-sudo scutil --set LocalHostName ${hostname}
-sudo scutil --set ComputerName ${hostname}
-
 dotfilesDir=$(pwd)
-
-# Link the JavaScript Console to PATH
-ln /System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc /usr/local/bin
-
-# Set your name and e-mail in the .gitconfig
-sed -i.bak 's/NAME/${name}/g' .gitconfig
-sed -i.bak 's/EMAIL/${email}/g' .gitconfig
-rm -f .gitconfig.bak
-
-dotfiles=".bashrc .bash_profile .vimrc .vim .gitconfig .gitignore .screenrc"
 
 ## Replace homedir $dotfiles with the ones from repo
 for file in $dotfiles ; do
@@ -34,7 +16,6 @@ for file in $dotfiles ; do
     ln -s ${dotfilesDir}/${file} ~/${file}
 done
 
-## Install xcode commandlinetools
 if [ ! -e /Library/Developer/CommandLineTools/usr/bin/gcc ]
 then
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
@@ -78,10 +59,6 @@ execdir=$(pwd)
 
 echo "Initialising git submodules"
 cd ~/dotfiles && vim submodule init && vim submodule update && cd $execdir
-
-## Enable FileVault encryption
-echo "Enabling FileVault encryption"
-sudo fdesetup enable
 
 ## Make .osx executable and run
 chmod +x ~/dotfiles/.osx
