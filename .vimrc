@@ -84,8 +84,11 @@ Plugin 'kylef/apiblueprint.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'kaicataldo/material.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'prettier/vim-prettier'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'mattn/emmet-vim'
+Plugin 'junegunn/goyo.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -117,7 +120,7 @@ if has("autocmd")
     autocmd FileType ruby setlocal ts=2 sw=2 sts=2 expandtab
 
     " remove trailing whitespace on save
-    autocmd BufWritePre *.go,*.js,*.html call <SID>Preserve("%s/\\s\\+$//e")
+    autocmd BufWritePre *.go,*.js,*.ts,*.html call <SID>Preserve("%s/\\s\\+$//e")
 
     " reload .vimrc on write when editing it
     autocmd BufWritePost .vimrc source $MYVIMRC
@@ -138,7 +141,7 @@ set lz          " Lazy redraw
 set autoindent      " Automatic indenting, on new line
 set smartindent     " Smart indenting, based on the typed code.
 set smarttab        " Use tabs at the start of a line, spaces elsewhere.
-set number      " Line nubmering
+set number relativenumber" Line nubmering
 set ignorecase
 set smartcase
 set numberwidth=4
@@ -288,4 +291,11 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:material_theme_style = 'dark'
 " NerdTree Toggle
 map <C-n> :NERDTreeToggle<CR>
+
+" Goyo
+let g:goyo_width = '80%'
+let g:margin_top = '5%'
+let g:margin_bottom = '5%'
+nmap <leader>f :Goyo \| set linebreak<CR>
+
 
