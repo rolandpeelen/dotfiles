@@ -89,6 +89,11 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'junegunn/goyo.vim'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'chemzqm/vim-jsx-improve'
+Plugin 'reasonml-editor/vim-reason-plus'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -141,7 +146,7 @@ set lz          " Lazy redraw
 set autoindent      " Automatic indenting, on new line
 set smartindent     " Smart indenting, based on the typed code.
 set smarttab        " Use tabs at the start of a line, spaces elsewhere.
-set number relativenumber" Line nubmering
+set number  " Line nubmering
 set ignorecase
 set smartcase
 set numberwidth=4
@@ -166,6 +171,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts=1
+let g:airline_theme = 'material'
 
 " Wildmenu/Wildmode for easily see which command line options are available
 set wildmenu
@@ -186,6 +192,7 @@ set nofoldenable
 "let sh_fold_enable=1
 
 " Mappings
+nmap <leader>i :call <SID>Preserve(":!refmt --in-place %")<CR>L<CR>
 nmap <leader>k :Explore<CR>
 nmap <leader>t :TagbarToggle<CR>
 nmap <leader>v :Vexplore<CR>
@@ -253,9 +260,6 @@ map man <ESC>:!man
 " Hide some files
 let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$'
 
-
-" Material Theme Configuration 
-let g:material_theme_style = 'dark'
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -266,11 +270,14 @@ if &t_Co > 2 || has("gui_running")
     "colorscheme alduin
     "colorscheme jellybeans
     colorscheme material
+    "colorscheme onehalfdark
     set background=dark
     syntax on
     set hlsearch
 endif
 
+" Material Theme Configuration 
+let g:material_theme_style = 'default'
 
 " Syntastic stuff
 " tidy html5, instead of 2006 version
@@ -287,8 +294,6 @@ let g:used_javascript_libs = 'underscore,lodash,angularjs,angularuirouter'
 " Rainbow parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
-" Material Theme Configuration 
-let g:material_theme_style = 'dark'
 " NerdTree Toggle
 map <C-n> :NERDTreeToggle<CR>
 
@@ -298,4 +303,5 @@ let g:margin_top = '5%'
 let g:margin_bottom = '5%'
 nmap <leader>f :Goyo \| set linebreak<CR>
 
-
+" enable autocomplete
+let g:deoplete#enable_at_startup = 1
