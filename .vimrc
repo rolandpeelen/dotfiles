@@ -82,7 +82,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'kaicataldo/material.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'pangloss/vim-javascript'
@@ -92,7 +91,9 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'reasonml-editor/vim-reason-plus'
-
+Plugin 'jparise/vim-graphql'
+Plugin 'hzchirs/vim-material'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -162,6 +163,9 @@ set wrap
 set linebreak
 set cursorline
 
+" Emet
+"let g:user_emmet_leader_key='<TAB>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Airline settings
 set laststatus=2
 let g:airline#extensions#tabline#enabled=1
