@@ -1,8 +1,3 @@
-setlocal conceallevel=1
-setlocal foldmethod=syntax
-setlocal tabstop=2 
-setlocal shiftwidth=2 
-setlocal expandtab
 let g:javascript_conceal_function             = "ƒ"
 let g:javascript_conceal_null                 = "ø"
 let g:javascript_conceal_this                 = "@"
@@ -15,6 +10,14 @@ let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "\ufc64"
 let g:javascript_conceal_underscore_arrow_function = "\uf876"
+
+set conceallevel=1
+setlocal conceallevel=1
+setlocal foldmethod=syntax
+setlocal tabstop=2 
+setlocal shiftwidth=2 
+setlocal expandtab
+
 
 " deoplete
 set completeopt=menuone,preview

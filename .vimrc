@@ -53,12 +53,12 @@ Plugin 'airblade/vim-gitgutter'
 " Javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'othree/jspc.vim'
 Plugin 'MaxMEllon/vim-jsx-pretty'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'othree/jspc.vim'
 Plugin 'elzr/vim-json'
 Plugin 'posva/vim-vue'
 Plugin 'carlitux/deoplete-ternjs'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()	     " required
@@ -135,6 +135,7 @@ set titlestring=VIM:\ %-t\ %y\ %a%r%m titlelen=70
 set wrap
 set linebreak
 set cursorline
+set nofoldenable
 " EditorConfig	----
 "
 " Autocommands ----
@@ -163,7 +164,7 @@ let g:deoplete#enable_refresh_always = 1
 let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 let g:deoplete#sources = {}
 let g:deoplete#omni#functions = {}
-
+let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
 " netrw settings -----------------------------------------------------------{{{
 let g:netrw_banner = 1
@@ -180,8 +181,8 @@ let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
-"let g:user_emmet_leader_key='<TAB>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+""let g:user_emmet_leader_key='<TAB>'
+"imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Lighline
 set noshowmode
@@ -319,6 +320,7 @@ inoremap jj <Esc>
 nnoremap gb :ls<CR>:b<Space>
 nmap <leader>codi :Codi!!<CR>
 nmap ,v :vsplit $MYVIMRC<CR>
+map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 
 " allow hjkl for moving between splits
 map <C-h> <C-w>h
