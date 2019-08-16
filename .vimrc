@@ -40,8 +40,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'hzchirs/vim-material'
 Plugin 'metakirby5/codi.vim'
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'roxma/nvim-yarp'
 Plugin 'ryanoasis/vim-devicons'
 
 " Git
@@ -49,19 +49,16 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/vim-github-dashboard'
 Plugin 'airblade/vim-gitgutter'
 
-" Javascript
-Plugin 'elzr/vim-json', {'for': 'json'}
-Plugin 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
-Plugin 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plugin 'othree/jspc.vim', {'for': ['javascript', 'javascript.jsx']}
-Plugin 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
-Plugin 'chemzqm/vim-jsx-improve', {'for': ['javascript', 'javascript.jsx']}
-Plugin 'carlitux/deoplete-ternjs', {'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
 
-" Code Highlighting
-Plugin 'ap/vim-css-color'
-Plugin 'reasonml-editor/vim-reason-plus'
-Plugin 'jparise/vim-graphql'
+" Javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'othree/jspc.vim'
+Plugin 'MaxMEllon/vim-jsx-pretty'
+Plugin 'elzr/vim-json'
+Plugin 'posva/vim-vue'
+Plugin 'carlitux/deoplete-ternjs'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()	     " required
@@ -73,6 +70,7 @@ if installVundle == 0
 endif
 " Vundle --------
 
+:python3 import neovim
 " Functions -----
 function! <SID>Preserve(command)
     " Save last search, and cursor position
@@ -111,6 +109,7 @@ filetype plugin indent on
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+
 set backupskip=/tmp/*,/private/tmp/*"
 set history=50	    " keep 50 lines of command line history
 set ruler	" show the cursor position all the time
@@ -130,6 +129,7 @@ set nohidden	    " remove the buffer when closing a tab
 set hid
 set listchars=tab:▸\ ,eol:¬
 set list
+set relativenumber
 set title
 set titlestring=VIM:\ %-t\ %y\ %a%r%m titlelen=70
 set wrap
@@ -164,6 +164,7 @@ let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 let g:deoplete#sources = {}
 let g:deoplete#omni#functions = {}
 
+
 " netrw settings -----------------------------------------------------------{{{
 let g:netrw_banner = 1
 let g:netrw_liststyle = 3
@@ -178,6 +179,9 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+"let g:user_emmet_leader_key='<TAB>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Lighline
 set noshowmode
@@ -286,9 +290,6 @@ let g:tagbar_autoshowtag = 1
 " Retab so file isn't mixed tabbing
 retab!
 
-" Emet
-"let g:user_emmet_leader_key='<TAB>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Airline settings
 set laststatus=2
 let g:airline#extensions#tabline#enabled=1
@@ -303,9 +304,6 @@ let g:airline_theme = 'material'
 " Wildmenu/Wildmode for easily see which command line options are available
 set wildmenu
 set wildmode=longest:full,full
-
-" Folding
-set nofoldenable
 
 " Mappings
 nmap <leader>i :call <SID>Preserve(":!refmt --in-place %")<CR>L<CR>
@@ -396,8 +394,6 @@ endif
 " Material Theme Configuration 
 let g:material_theme_style = 'default'
 
-" js checkers
-let g:syntastic_javascript_checkers = ['eslint']
 " ignore ionic tags and angular attributes
 let g:syntastic_html_tidy_ignore_errors=["<ion-", "discarding unexpected </ion-", " proprietary attribute \"ng-"]
 
