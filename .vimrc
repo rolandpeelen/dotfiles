@@ -181,8 +181,8 @@ let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
-""let g:user_emmet_leader_key='<TAB>'
-"imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+"let g:user_emmet_leader_key='<TAB>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Lighline
 set noshowmode

@@ -14,7 +14,6 @@ brew install vim --override-system-vi --with-lua
 
 ## Git
 brew install git
-#brew cask install github
 
 ## Completions
 brew tap homebrew/completions
@@ -30,8 +29,9 @@ brew install ruby-completion
 #brew cask install appcleaner
 brew install autoconf
 brew install automake
-brew install ctags
 brew install curl
+brew tap universal-ctags/universal-ctags
+brew install universal-ctags
 brew install dos2unix
 brew cask install gpgtools
 brew install libyaml
@@ -62,42 +62,34 @@ brew install wireshark
 ## Software development
 brew install erlang
 brew install npm
-#brew install nvm
+brew install nvm
 brew install go
 brew install python3
 brew install rbenv
 brew install rbenv-ctags
 brew install rbenv-gemset
 brew install ruby-build
-#brew cask install phpstorm
-#brew case install pycharm
-#brew cask install rubymine
 
 ## Heroku
 brew install heroku-toolbelt
 
 ## Web
-brew cask install firefox
 brew cask install google-chrome
-brew cask install opera
 
 ## Chat
 brew cask install google-hangouts
 brew cask install skype
+brew cask install numi
+brew cask install zoomus
 
 ## Entertainment
 brew cask install spotify
-brew cask install soundnode-app
 brew cask install vlc
 
 ## Virtualization
-#brew cask install vmware-fusion
-#brew cask install virtualbox
-#brew cask install vagrant
+brew cask install virtualbox
 
 ## Other
-#brew cask install anki
-brew cask install bankid
 brew cask install evernote
 brew cask install flux
 brew cask install openemu
