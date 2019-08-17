@@ -59,6 +59,7 @@ Plugin 'othree/jspc.vim'
 Plugin 'elzr/vim-json'
 Plugin 'posva/vim-vue'
 Plugin 'carlitux/deoplete-ternjs'
+Plugin 'Galooshi/vim-import-js'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	     " required
@@ -307,7 +308,7 @@ set wildmenu
 set wildmode=longest:full,full
 
 " Mappings
-nmap <leader>i :call <SID>Preserve(":!refmt --in-place %")<CR>L<CR>
+"nmap <leader>i :call <SID>Preserve(":!refmt --in-place %")<CR>L<CR>
 nmap <leader>k :Explore<CR>
 nmap <leader>t :TagbarToggle<CR>
 nmap <leader>v :Vexplore<CR>
