@@ -43,6 +43,7 @@ Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'roxma/nvim-yarp'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'junegunn/goyo.vim'
 
 " Git
 Plugin 'tpope/vim-fugitive'
@@ -60,8 +61,9 @@ Plugin 'elzr/vim-json'
 Plugin 'posva/vim-vue'
 Plugin 'carlitux/deoplete-ternjs'
 Plugin 'Galooshi/vim-import-js'
+Plugin 'williamboman/vim-import-ts'
 
-" All of your Plugins must be added before the following line
+" All of your Plugins must be a,dded before the following line
 call vundle#end()	     " required
 
 if installVundle == 0
