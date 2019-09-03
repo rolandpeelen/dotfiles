@@ -24,7 +24,7 @@ sed -i.bak 's/NAME/${name}/g' .gitconfig
 sed -i.bak 's/EMAIL/${email}/g' .gitconfig
 rm -f .gitconfig.bak
 
-dotfiles=".bashrc .bash_profile .vimrc .vim .gitconfig .gitignore .screenrc"
+dotfiles=".bashrc .bash_profile .vimrc .zshrc .vim .gitconfig .gitignore .screenrc .wtfrc"
 
 ## Replace homedir $dotfiles with the ones from repo
 for file in $dotfiles ; do
