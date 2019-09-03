@@ -63,6 +63,9 @@ Plugin 'carlitux/deoplete-ternjs'
 Plugin 'Galooshi/vim-import-js'
 Plugin 'williamboman/vim-import-ts'
 
+" Reason
+Plugin 'reasonml-editor/vim-reason-plus'
+
 " All of your Plugins must be a,dded before the following line
 call vundle#end()	     " required
 
@@ -171,7 +174,7 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
 " netrw settings -----------------------------------------------------------{{{
 let g:netrw_banner = 1
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 4
 let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$'
 " }}}
 
@@ -296,6 +299,12 @@ retab!
 
 " Airline settings
 set laststatus=2
+let g:airline_extensions = ['reason']
+let g:reasonml_project_airline=1
+let g:reasonml_syntastic_airline=1
+let g:reasonml_clean_project_airline=1
+let g:airline_skip_empty_sections = 1
+
 let g:airline#extensions#tabline#enabled=1
 let g:airline_detect_modified=1
 let g:airline#extensions#whitespace#enabled=1

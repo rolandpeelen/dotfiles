@@ -50,7 +50,7 @@ let b:ale_linters = {
 \   'javascript': ['eslint'],
 \ }
 let b:ale_fixers = {
-\   'javascript': ['prettier', 'eslint', 'importjs'],
+\   'javascript': ['prettier'],
 \ }
 let g:ale_pattern_options = {
 \  '\.min\.js$': {'ale_enabled': 0},

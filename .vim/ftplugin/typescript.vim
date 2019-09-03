@@ -47,11 +47,12 @@ let b:jsdoc_enable_es6 = 1
 
 " ale
 let b:ale_javascript_prettier_use_local_config = 1
+let g:ale_linters_ignore = {'typescript': ['tslint']}
 let b:ale_linters = {
 \   'typescript': ['tslint'],
 \ }
 let b:ale_fixers = {
-\   'typescript': ['prettier', 'tslint', 'importts'],
+\   'typescript': ['prettier', 'tslint', 'importjs'],
 \ }
 let g:ale_pattern_options = {
 \  '\.min\.js$': {'ale_enabled': 0},
