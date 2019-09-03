@@ -47,6 +47,7 @@ brew install watch
 brew install watchman
 brew install wget
 brew install xz
+brew install zsh
 
 # Security utils
 brew install john
@@ -90,11 +91,11 @@ brew cask install vlc
 brew cask install virtualbox
 
 ## Other
-brew cask install evernote
 brew cask install flux
 brew cask install openemu
 brew cask install sizeup
-brew cask install utorrent
+brew cask install trello
+brew cask install viscosity
 
 ## If it exists as an .app, link it to /Users/<you>/Applications
 brew linkapps --local
