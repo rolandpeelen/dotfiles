@@ -11,7 +11,7 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(git osx yarn)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # Aliasses
 alias gitFolder="cd ~/Git"
