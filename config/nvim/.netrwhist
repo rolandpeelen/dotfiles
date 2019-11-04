@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/Roland/Git/dotfiles/config/nvim'
+let g:netrw_dirhist_8='/Users/Roland/Git/dotfiles/config/nvim/ftplugin'
+let g:netrw_dirhist_7='/Users/Roland/Git/dotfiles/config/nvim'
+let g:netrw_dirhist_6='/Users/Roland/Git/dotfiles/config/nvim/plugin'
+let g:netrw_dirhist_5='/Users/Roland/Git/dotfiles/config/nvim'
+let g:netrw_dirhist_4='/Users/Roland/Git/tenzir/grand-stack-starter/ui/src'
+let g:netrw_dirhist_3='/Users/Roland/Git/tenzir/grand-stack-starter/ui'
+let g:netrw_dirhist_2='/Users/Roland/Git/tenzir/grand-stack-starter'
+let g:netrw_dirhist_1='/Users/Roland/Git/dotfiles/config/nvim'
+let g:netrw_dirhist_0='/Users/Roland/Git/dotfiles/config/nvim/plugin'
