@@ -26,7 +26,7 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/rolandpeelen/.gitignore
+	excludesfile = /Users/rolandpeelen/.gitignore_global
 [alias]
 	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
 [difftool "sourcetree"]
@@ -36,4 +36,4 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/rolandpeelen/.stCommitMsg
+	template = ~/.stCommitMsg

@@ -29,6 +29,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
+Plug 'Yggdroot/LeaderF'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -160,7 +161,7 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 " netrw settings -----------------------------------------------------------{{{
 let g:netrw_banner = 1
 let g:netrw_liststyle = 4
-let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$'
+let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,*\.bs.js'
 " }}}
 
 " ale
@@ -282,29 +283,11 @@ let g:tagbar_autoshowtag = 1
 " Retab so file isn't mixed tabbing
 retab!
 
-" Airline settings
-set laststatus=2
-let g:airline_extensions = ['reason']
-let g:reasonml_project_airline=1
-let g:reasonml_syntastic_airline=1
-let g:reasonml_clean_project_airline=1
-let g:airline_skip_empty_sections = 1
-
-let g:airline#extensions#tabline#enabled=1
-let g:airline_detect_modified=1
-let g:airline#extensions#whitespace#enabled=1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_powerline_fonts=1
-let g:airline_theme = 'material_vim'
-
 " Wildmenu/Wildmode for easily see which command line options are available
 set wildmenu
 set wildmode=longest:full,full
 
 " Mappings
-"nmap <leader>i :call <SID>Preserve(":!refmt --in-place %")<CR>L<CR>
 nmap <leader>k :Explore<CR>
 nmap <leader>v :Vexplore<CR>
 nmap <leader>vn :vnew<CR>
@@ -316,6 +299,10 @@ inoremap jj <Esc>
 nnoremap gb :ls<CR>:b<Space>
 nmap ,v :vsplit $MYVIMRC<CR>
 map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+
+" remap for when deoplete is in view
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 map <silent> <c-h> <Plug>WinMoveLeft
 map <silent> <c-j> <Plug>WinMoveDown
@@ -336,7 +323,7 @@ set switchbuf=usetab
 set stal=2
 
 " Hide some files
-let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$'
+let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,*\.bs.js'
 
 " For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
 if (has('nvim'))
@@ -367,5 +354,10 @@ let g:syntastic_html_tidy_ignore_errors=["<ion-", "discarding unexpected </ion-"
 
 " Rainbow parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+" LeaderF
+"let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_CommandMap = {'<C-P>': ['<Up>'], '<C-N>': ['<Down>']}
 
 

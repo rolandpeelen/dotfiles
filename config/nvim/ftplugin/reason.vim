@@ -5,18 +5,17 @@ setlocal tabstop=2
 setlocal shiftwidth=2 
 setlocal expandtab
 
-au BufWritePre *.js call <SID>Preserve("%s/\\s\\+$//e")
-
-
 " Reason Language Server
 let g:LanguageClient_serverCommands = {
-\ 'reason': ['/Users/Roland/.config/nvim/plugin/reason-language-server'],
+\ 'reason': ['~/.config/nvim/plugin/reason-language-server'],
 \ }
 
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
 nnoremap <silent> <cr> :call LanguageClient#textDocument_hover()<cr>
 
+" TODO -- Make this work
+"au BufWritePre *.re call <SID>Preserve(LanguageClient#textDocument_formatting())
 
 function! <SID>Preserve(command)
   " Save last search, and cursor position
