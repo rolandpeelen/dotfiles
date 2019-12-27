@@ -1,5 +1,7 @@
-set conceallevel=1
-setlocal conceallevel=1
+:syntax match Conceal /=>/ conceal cchar=⇒
+
+set conceallevel=2
+setlocal conceallevel=2
 setlocal foldmethod=syntax
 setlocal tabstop=2 
 setlocal shiftwidth=2 

@@ -19,14 +19,14 @@ alias cl="clear"
 alias ll="ls -lsa"
 alias vim="nvim"
 alias vi="nvim"
+alias vastPro="~/Git/tenzir/event-horizon/vast-pro/build/bin/vast"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 #Plugin manager
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-source $(brew --prefix autoenv)/activate.sh # This loads autoenv
+# opam configuration
+test -r /Users/Roland/.opam/opam-init/init.zsh && . /Users/Roland/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
