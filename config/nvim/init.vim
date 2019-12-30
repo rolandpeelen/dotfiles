@@ -10,12 +10,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Basics
 Plug 'tomtom/tlib_vim'
 Plug 'marcweber/vim-addon-mw-utils'
-Plug 'junegunn/gv.vim'
 Plug 'chrisbra/unicode.vim' 
 
 " Productivity / UI
 Plug 'scrooloose/nerdcommenter'
-Plug 'majutsushi/tagbar'
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'townk/vim-autoclose'
@@ -30,10 +28,12 @@ Plug 'roxma/nvim-yarp'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'Yggdroot/LeaderF'
+Plug 'lilydjwg/colorizer'
+Plug 'RRethy/vim-illuminate'
+
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/vim-github-dashboard'
 Plug 'airblade/vim-gitgutter'
 
 
@@ -44,7 +44,6 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 Plug 'othree/jspc.vim'
 Plug 'elzr/vim-json'
-Plug 'posva/vim-vue'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'Galooshi/vim-import-js'
 Plug 'williamboman/vim-import-ts'
