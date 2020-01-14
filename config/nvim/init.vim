@@ -30,6 +30,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'Yggdroot/LeaderF'
 Plug 'lilydjwg/colorizer'
 Plug 'RRethy/vim-illuminate'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'https://github.com/alok/notational-fzf-vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 
 " Git
@@ -143,6 +147,11 @@ if has("autocmd")
     autocmd BufWritePost .vimrc source $MYVIMRC
 endif
 " Autocommands ----
+
+" notational velocity
+let g:nv_search_paths = ['~/Documents/Notes']
+let g:nv_default_extension = '.md'
+let g:nv_create_note_key = 'ctrl-x'
 
 " deoplete
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -294,6 +303,7 @@ nmap <leader>l :set list!<CR>
 nmap <silent> _$ :call <SID>Preserve("%s/\\s\\+$//e")<CR>
 nmap <silent> _= :call <SID>Preserve("normal gg=G")<CR>
 nmap <silent> _0 :call <SID>Preserve(":g/^\s*$/d")<CR>
+nnoremap <silent> <leader>n :NV<CR>
 inoremap jj <Esc>
 nnoremap gb :ls<CR>:b<Space>
 nmap ,v :vsplit $MYVIMRC<CR>
