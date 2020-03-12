@@ -21,7 +21,6 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
-Plug 'kaicataldo/material.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
@@ -34,7 +33,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-
+Plug 'arcticicestudio/nord-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -143,6 +142,7 @@ if has("autocmd")
     " remove trailing whitespace on save
     autocmd BufWritePre *.go,*.js,*.ts,*.html call <SID>Preserve("%s/\\s\\+$//e")
 
+
     " reload .vimrc on write when editing it
     autocmd BufWritePost .vimrc source $MYVIMRC
 endif
@@ -167,9 +167,10 @@ let g:deoplete#omni#functions = {}
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
 " netrw settings -----------------------------------------------------------{{{
-let g:netrw_banner = 1
-let g:netrw_liststyle = 4
-let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,*\.bs.js'
+let g:netrw_banner = 0 
+let g:netrw_liststyle = 0
+let g:netrw_list_hide='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,\.bs\.js'
+let g:netrw_hide = 1
 " }}}
 
 " ale
@@ -187,7 +188,7 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Lighline
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'material_vim',
+      \ 'colorscheme': 'nord',
       \ 'separator': {
       \   'left': "\ue0b8",
       \   'right': "\ue0be"
@@ -346,14 +347,11 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-" Material Theme Configuration 
-let g:material_theme_style = 'palenight'
-
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
     set background=dark
-    colorscheme material
+    colorscheme nord
     syntax on
     set hlsearch
 endif
