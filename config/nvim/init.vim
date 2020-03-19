@@ -96,6 +96,15 @@ function! CSVH(colnr)
 endfunction
 command! -nargs=1 Csv :call CSVH(<args>)
 " Functions -----
+"
+
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
+    \ }
+
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
+nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
+nnoremap <silent> <cr> :call LanguageClient#textDocument_hover()<cr>
 
 " EditorConfig	----
 filetype plugin indent on
@@ -169,7 +178,7 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 " netrw settings -----------------------------------------------------------{{{
 let g:netrw_banner = 0 
 let g:netrw_liststyle = 0
-let g:netrw_list_hide='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,\.bs\.js'
+let g:netrw_list_hide='^\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,\.bs\.js'
 let g:netrw_hide = 1
 " }}}
 
