@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 " All other plugins
 " Basics
+Plug 'jceb/vim-orgmode'
 Plug 'tomtom/tlib_vim'
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'chrisbra/unicode.vim' 
@@ -156,10 +157,12 @@ if has("autocmd")
     autocmd BufWritePost .vimrc source $MYVIMRC
 endif
 " Autocommands ----
+" Orgmode
+let g:org_agenda_files = ['~/Documents/Notes']
 
 " notational velocity
 let g:nv_search_paths = ['~/Documents/Notes']
-let g:nv_default_extension = '.md'
+let g:nv_default_extension = '.org'
 let g:nv_create_note_key = 'ctrl-x'
 
 " deoplete

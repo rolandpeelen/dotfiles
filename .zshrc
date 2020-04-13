@@ -19,7 +19,6 @@ alias cl="clear"
 alias ll="ls -lsa"
 alias vim="nvim"
 alias vi="nvim"
-alias vast="~/Git/tenzir/event-horizon/vast-pro/build/bin/vast"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
