@@ -8,7 +8,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd/mm/yyyy"
 
 # Plugins
-plugins=(git osx yarn)
+plugins=(git osx yarn ssh-agent)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
@@ -19,6 +19,7 @@ alias cl="clear"
 alias ll="ls -lsa"
 alias vim="nvim"
 alias vi="nvim"
+alias vastEndpointDocker="docker run -t eu.gcr.io/crucial-kayak-261816/vast-pro:latest -e 172.17.0.1:42000" 
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
