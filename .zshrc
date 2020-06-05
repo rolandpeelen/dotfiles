@@ -8,7 +8,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd/mm/yyyy"
 
 # Plugins
-plugins=(git osx yarn ssh-agent)
+plugins=(git osx yarn ssh-agent fzf-tab)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"

@@ -8,10 +8,13 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 " All other plugins
 " Basics
-Plug 'jceb/vim-orgmode'
-Plug 'tomtom/tlib_vim'
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'chrisbra/unicode.vim' 
+
+" Orgmode
+Plug 'mattn/calendar-vim'
+Plug 'jceb/vim-orgmode'
+Plug 'tomtom/tlib_vim'
 
 " Productivity / UI
 Plug 'scrooloose/nerdcommenter'
@@ -114,7 +117,7 @@ set backspace=indent,eol,start
 
 
 set backupskip=/tmp/*,/private/tmp/*"
-set history=50	    " keep 50 lines of command line history
+set history=250	    " keep 50 lines of command line history
 set ruler	" show the cursor position all the time
 set showcmd	" display incomplete commands
 set incsearch	    " do incremental searching
@@ -126,6 +129,7 @@ set number  " Line nubmering
 set ignorecase
 set smartcase
 set numberwidth=4
+set colorcolumn=80
 set novisualbell
 set noerrorbells
 set nohidden	    " remove the buffer when closing a tab
@@ -158,7 +162,8 @@ if has("autocmd")
 endif
 " Autocommands ----
 " Orgmode
-let g:org_agenda_files = ['~/Documents/Notes']
+let g:org_agenda_files = ['~/Documents/Notes/todo.org']
+:let g:org_todo_keywords=['TODO', 'DOING', 'REVIEW', '|', 'DONE'] 
 
 " notational velocity
 let g:nv_search_paths = ['~/Documents/Notes']
@@ -168,14 +173,12 @@ let g:nv_create_note_key = 'ctrl-x'
 " deoplete
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#min_pattern_length = 2
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
-let g:deoplete#sources = {}
-let g:deoplete#omni#functions = {}
+call deoplete#custom#option({ 
+			\ 'enable_ignore_case' : 1 ,
+			\ 'enable_smart_case' : 1 ,
+			\ 'enable_camel_case' : 1 ,
+			\ 'enable_refresh_always' : 1 ,
+			\ })
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
 " netrw settings -----------------------------------------------------------{{{
