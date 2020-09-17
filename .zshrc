@@ -1,14 +1,14 @@
 #lis Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME="agnoster"
+ZSH_THEME="agnoster2"
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd/mm/yyyy"
 
 # Plugins
-plugins=(git osx yarn ssh-agent fzf-tab)
+plugins=(git osx yarn fzf-tab ssh-agent)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
@@ -30,3 +30,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # opam configuration
 test -r /Users/Roland/.opam/opam-init/init.zsh && . /Users/Roland/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Created by `userpath` on 2020-07-07 09:38:19
+export PATH="$PATH:/Users/Roland/.local/bin"
+source $HOME/.cargo/env
+[ -f "/Users/Roland/.ghcup/env" ] && source "/Users/Roland/.ghcup/env" # ghcup-env

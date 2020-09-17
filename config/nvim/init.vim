@@ -1,8 +1,8 @@
 " Setup plugins ------------------------------------------------------------{{{
 if empty(glob('~/.local/share/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.local/share/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -43,7 +43,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
@@ -56,12 +55,15 @@ Plug 'Galooshi/vim-import-js'
 Plug 'williamboman/vim-import-ts'
 Plug 'prettier/vim-prettier'
 
+" Python
+Plug 'psf/black', { 'branch': 'stable' }
+
 " Reason (as per vim-reason-plus recommendations)
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+			\ 'branch': 'next',
+			\ 'do': 'bash install.sh',
+			\ }
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 call plug#end()
@@ -70,41 +72,43 @@ call plug#end()
 
 " Functions -----
 function! <SID>Preserve(command)
-    " Save last search, and cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+	" Save last search, and cursor position
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
 
-    " run command
-    execute a:command
+	" run command
+	execute a:command
 
-    " restore state
-    let @/=_s
-    call cursor(l, c)
+	" restore state
+	let @/=_s
+	call cursor(l, c)
 endfunction
 
 " Highlight a column in csv text
 " :Csv 1    " Highlight first column
 " :Csv 0    " switch off hilight
 function! CSVH(colnr)
-    if a:colnr > 1
-	let n = a:colnr - 1
-	execute 'match Keyword /^\([^,]*,\)\{'.n.'}\zs[^,]*/'
-	execute 'normal! 0'.n.'f,'
-    elseif a:colnr == 1
-	match Keyword /^[^,]*/
-	normal! 0
-    else
-	match
-    endif
+	if a:colnr > 1
+		let n = a:colnr - 1
+		execute 'match Keyword /^\([^,]*,\)\{'.n.'}\zs[^,]*/'
+		execute 'normal! 0'.n.'f,'
+	elseif a:colnr == 1
+		match Keyword /^[^,]*/
+		normal! 0
+	else
+		match
+	endif
 endfunction
 command! -nargs=1 Csv :call CSVH(<args>)
 " Functions -----
 "
 
 let g:LanguageClient_serverCommands = {
-    \ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
-    \ }
+			\ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
+			\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+			\ 'python': ['/usr/local/bin/pyls'],
+			\ }
 
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
@@ -148,19 +152,22 @@ set nofoldenable
 " Autocommands ----
 " Set default indentation
 if has("autocmd")
-    augroup init
-      au!
-      au BufRead * RainbowParentheses
-    augroup END
+	augroup init
+		au!
+		au BufRead * RainbowParentheses
+	augroup END
 
-    " remove trailing whitespace on save
-    autocmd BufWritePre *.go,*.js,*.ts,*.html call <SID>Preserve("%s/\\s\\+$//e")
+	" remove trailing whitespace on save
+	autocmd BufWritePre *.go,*.js,*.ts,*.html call <SID>Preserve("%s/\\s\\+$//e")
 
 
-    " reload .vimrc on write when editing it
-    autocmd BufWritePost .vimrc source $MYVIMRC
+	" reload .vimrc on write when editing it
+	autocmd BufWritePost .vimrc source $MYVIMRC
 endif
 " Autocommands ----
+autocmd BufReadPost *.rs setlocal filetype=rust
+set hidden
+
 " Orgmode
 let g:org_agenda_files = ['~/Documents/Notes/todo.org']
 :let g:org_todo_keywords=['TODO', 'DOING', 'REVIEW', '|', 'DONE'] 
@@ -203,99 +210,83 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Lighline
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ 'separator': {
-      \   'left': "\ue0b8",
-      \   'right': "\ue0be"
-      \ },
-      \ 'subseparator': {
-      \   'left': "\ue0b9",
-      \   'right': "\ue0b9"
-      \ },
-      \ 'active': {
-      \   'left': [
-      \     [ 'mode', 'paste' ],
-      \     [ 'filename', 'modified', 'fileencoding', 'fileformat', 'filetype' ]
-      \   ],
-      \   'right': [
-      \     [ 'readonly', 'charvaluehex', 'percent', 'lineinfo' ],
-      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
-      \   ]
-      \ },
-      \ 'inactive': {
-      \   'left': [
-      \     [ 'filename', 'modified', 'fileencoding', 'fileformat', 'filetype' ]
-      \   ],
-      \   'right': [
-      \     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
-      \   ]
-      \ },
-      \ 'tabline': {
-      \   'left': [ [ 'vimlogo', 'tabs' ] ],
-      \   'right': [ [ 'gitbranch', 'close' ] ]
-      \ },
-      \ 'tabline_separator': {
-      \   'left': "\ue0bc",
-      \   'right': "\ue0ba"
-      \ },
-      \ 'tabline_subseparator': {
-      \   'left': "\ue0bb",
-      \   'right': "\ue0bb"
-      \ },
-      \ 'component': {
-      \   'charvaluehex': '0x%B',
-      \   'percent': '%3p%%',
-      \   'lineinfo': "\ue0a1%3l:%-2v",
-      \   'paste': '%{&paste?"PASTE":""}',
-      \   'vimlogo': "\ue7c5"
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'LightlineGitBranch',
-      \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat',
-      \   'readonly': 'LightlineReadonly'
-      \ },
-      \ 'component_expand': {
-      \   'linter_checking': 'lightline#ale#checking',
-      \   'linter_warnings': 'lightline#ale#warnings',
-      \   'linter_errors': 'lightline#ale#errors',
-      \   'linter_ok': 'lightline#ale#ok',
-      \ },
-      \ 'component_type': {
-      \   'linter_checking': 'middle',
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error',
-      \   'linter_ok': 'middle',
-      \ },
-      \ 'component_visible_condition': {
-      \   'modified': '&modified||!&modifiable',
-      \   'readonly': '&readonly',
-      \   'paste': '&paste',
-      \ }
-      \ }
+			\ 'colorscheme': 'nord',
+			\ 'active': {
+			\   'left': [
+			\     [ 'mode', 'paste' ],
+			\     [ 'filename', 'modified', 'fileencoding', 'fileformat', 'filetype' ]
+			\   ],
+			\   'right': [
+			\     [ 'readonly', 'charvaluehex', 'percent', 'lineinfo' ],
+			\     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
+			\   ]
+			\ },
+			\ 'inactive': {
+			\   'left': [
+			\     [ 'mode', 'paste' ],
+			\     [ 'filename', 'modified', 'fileencoding', 'fileformat', 'filetype' ]
+			\   ],
+			\   'right': [
+			\     [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
+			\   ]
+			\ },
+			\ 'tabline': {
+			\   'left': [ [ 'tabs' ] ],
+			\   'right': [ [ 'gitbranch' ] ]
+			\ },
+			\ 'component': {
+			\   'charvaluehex': '0x%B',
+			\   'percent': '%3p%%',
+			\   'lineinfo': "\ue0a1%3l:%-2v",
+			\   'paste': '%{&paste?"PASTE":""}',
+			\ },
+			\ 'component_function': {
+			\   'gitbranch': 'LightlineGitBranch',
+			\   'filetype': 'MyFiletype',
+			\   'fileformat': 'MyFileformat',
+			\   'readonly': 'LightlineReadonly'
+			\ },
+			\ 'component_expand': {
+			\   'linter_checking': 'lightline#ale#checking',
+			\   'linter_warnings': 'lightline#ale#warnings',
+			\   'linter_errors': 'lightline#ale#errors',
+			\   'linter_ok': 'lightline#ale#ok',
+			\ },
+			\ 'component_type': {
+			\   'linter_checking': 'middle',
+			\   'linter_warnings': 'warning',
+			\   'linter_errors': 'error',
+			\   'linter_ok': 'middle',
+			\ },
+			\ 'component_visible_condition': {
+			\   'modified': '&modified||!&modifiable',
+			\   'readonly': '&readonly',
+			\   'paste': '&paste',
+			\ }
+			\ }
 let g:lightline#ale#indicator_checking = "\ue0b8"
 let g:lightline#ale#indicator_warnings = "\uf529"
 let g:lightline#ale#indicator_errors = "\uf00d"
 let g:lightline#ale#indicator_ok = "\uf00c"
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+	return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
 function! LightlineGitBranch()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
+	let branch = fugitive#head()
+	if exists('*fugitive#head')
+		return branch !=# '' ? ' '.branch : ''
+	endif
+	return ''
 endfunction
 
 function! LightlineReadonly()
-  return &readonly ? '' : ''
+	return &readonly ? '' : ''
 endfunction
 
 " tagbar
@@ -352,23 +343,23 @@ let g:explHideFiles='^\.,.*\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,*\.bs
 
 " For Neovim 0.1.3 and 0.1.4 - https://github.com/neovim/neovim/pull/2198
 if (has('nvim'))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+	let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 endif
 
 " For Neovim > 0.1.5 and Vim > patch 7.4.1799 - https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162
 " Based on Vim patch 7.4.1770 (`guicolors` option) - https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd
 " https://github.com/neovim/neovim/wiki/Following-HEAD#20160511
 if (has('termguicolors'))
-  set termguicolors
+	set termguicolors
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-    set background=dark
-    colorscheme nord
-    syntax on
-    set hlsearch
+	set background=dark
+	colorscheme nord
+	syntax on
+	set hlsearch
 endif
 
 " ignore ionic tags and angular attributes
