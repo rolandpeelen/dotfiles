@@ -10,6 +10,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Basics
 Plug 'marcweber/vim-addon-mw-utils'
 Plug 'chrisbra/unicode.vim' 
+Plug 'itspriddle/vim-shellcheck'
 
 " Orgmode
 Plug 'mattn/calendar-vim'
@@ -54,6 +55,10 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'Galooshi/vim-import-js'
 Plug 'williamboman/vim-import-ts'
 Plug 'prettier/vim-prettier'
+
+" Haskell
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+
 
 " Python
 Plug 'psf/black', { 'branch': 'stable' }
@@ -106,13 +111,18 @@ command! -nargs=1 Csv :call CSVH(<args>)
 
 let g:LanguageClient_serverCommands = {
 			\ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
-			\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+			\ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
 			\ 'python': ['/usr/local/bin/pyls'],
 			\ }
 
+nnoremap <silent> gr :call LanguageClient#explainErrorAtPoint()<cr>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
 nnoremap <silent> <cr> :call LanguageClient#textDocument_hover()<cr>
+let g:LanguageClient_hoverPreview = "Always"
+
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+
 
 " EditorConfig	----
 filetype plugin indent on
