@@ -21,41 +21,25 @@ Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'roxma/nvim-yarp'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'Yggdroot/LeaderF'
-Plug 'lilydjwg/colorizer'
-Plug 'RRethy/vim-illuminate'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'https://github.com/alok/notational-fzf-vim'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'ayu-theme/ayu-vim'
 Plug 'ayu-theme/ayu-vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
-Plug 'othree/jspc.vim'
-Plug 'elzr/vim-json'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'Galooshi/vim-import-js'
-Plug 'williamboman/vim-import-ts'
 Plug 'prettier/vim-prettier'
 
 " Python
 Plug 'psf/black', { 'branch': 'stable' }
-
-" Swift
-Plug 'bumaociyuan/vim-swift'
 
 " Reason (as per vim-reason-plus recommendations)
 Plug 'reasonml-editor/vim-reason-plus'
@@ -107,6 +91,7 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 let g:LanguageClient_serverCommands = {
 \ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
 \ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
+\ 'javascript': ['typescript-language-server', '--stdio'],
 \ 'rust': ['rust-analyzer'],
 \ 'python': ['/usr/local/bin/pyls'],
 \ }
@@ -177,18 +162,10 @@ set hidden
 " Timeoutlenght
 set ttimeoutlen=100
 
-" Orgmode
-let g:org_agenda_files = ['~/Documents/Notes/todo.org']
-:let g:org_todo_keywords=['TODO', 'DOING', 'REVIEW', '|', 'DONE'] 
-
-" notational velocity
-let g:nv_search_paths = ['~/Documents/Notes']
-let g:nv_default_extension = '.org'
-let g:nv_create_note_key = 'ctrl-x'
-
 " deoplete
 let g:python3_host_prog = '/Users/Roland/.pyenv/shims/python'
 let g:deoplete#enable_at_startup = 1
+set completeopt+=noinsert
 call deoplete#custom#option({ 
 			\ 'enable_ignore_case' : 1 ,
 			\ 'enable_smart_case' : 1 ,
@@ -203,6 +180,11 @@ let g:netrw_liststyle = 0
 let g:netrw_list_hide='^\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,\.bs\.js'
 let g:netrw_hide = 1
 " }}}
+"
+" 
+
+let g:Hexokinase_highlighters = ['virtual']
+
 
 
 "let g:user_emmet_leader_key='<TAB>'
