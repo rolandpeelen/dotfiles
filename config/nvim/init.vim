@@ -12,11 +12,6 @@ Plug 'marcweber/vim-addon-mw-utils'
 Plug 'chrisbra/unicode.vim' 
 Plug 'itspriddle/vim-shellcheck'
 
-" Orgmode
-Plug 'mattn/calendar-vim'
-Plug 'jceb/vim-orgmode'
-Plug 'tomtom/tlib_vim'
-
 " Productivity / UI
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
@@ -38,7 +33,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'ayu-theme/ayu-vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -56,12 +53,11 @@ Plug 'Galooshi/vim-import-js'
 Plug 'williamboman/vim-import-ts'
 Plug 'prettier/vim-prettier'
 
-" Haskell
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-
-
 " Python
 Plug 'psf/black', { 'branch': 'stable' }
+
+" Swift
+Plug 'bumaociyuan/vim-swift'
 
 " Reason (as per vim-reason-plus recommendations)
 Plug 'reasonml-editor/vim-reason-plus'
@@ -107,21 +103,24 @@ function! CSVH(colnr)
 endfunction
 command! -nargs=1 Csv :call CSVH(<args>)
 " Functions -----
+autocmd BufReadPost *.rs setlocal filetype=rust
 "
 
 let g:LanguageClient_serverCommands = {
-			\ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
-			\ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
-			\ 'python': ['/usr/local/bin/pyls'],
-			\ }
+\ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
+\ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
+\ 'rust': ['rust-analyzer'],
+\ 'python': ['/usr/local/bin/pyls'],
+\ }
+
+" Disable this for Rust stuff.
+"let g:LanguageClient_rootMarkers = ['main.hs', '*.cabal', 'stack.yaml']
 
 nnoremap <silent> gr :call LanguageClient#explainErrorAtPoint()<cr>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
 nnoremap <silent> <cr> :call LanguageClient#textDocument_hover()<cr>
-let g:LanguageClient_hoverPreview = "Always"
 
-let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
 
 
 " EditorConfig	----
@@ -175,8 +174,10 @@ if has("autocmd")
 	autocmd BufWritePost .vimrc source $MYVIMRC
 endif
 " Autocommands ----
-autocmd BufReadPost *.rs setlocal filetype=rust
 set hidden
+
+" Timeoutlenght
+set ttimeoutlen=100
 
 " Orgmode
 let g:org_agenda_files = ['~/Documents/Notes/todo.org']
@@ -188,7 +189,7 @@ let g:nv_default_extension = '.org'
 let g:nv_create_note_key = 'ctrl-x'
 
 " deoplete
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/Users/Roland/.pyenv/shims/python'
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({ 
 			\ 'enable_ignore_case' : 1 ,
@@ -213,6 +214,10 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+hi link ALEError Error
+hi Warning term=underline cterm=underline ctermfg=Yellow gui=undercurl guisp=Gold
+hi link ALEWarning Warning
+hi link ALEInfo SpellCap
 
 "let g:user_emmet_leader_key='<TAB>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -220,7 +225,7 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Lighline
 set noshowmode
 let g:lightline = {
-			\ 'colorscheme': 'nord',
+			\ 'colorscheme': 'ayu',
 			\ 'active': {
 			\   'left': [
 			\     [ 'mode', 'paste' ],
@@ -366,17 +371,16 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-	set background=dark
-	colorscheme nord
 	syntax on
 	set hlsearch
+	colorscheme ayu
 endif
 
-" ignore ionic tags and angular attributes
-let g:syntastic_html_tidy_ignore_errors=["<ion-", "discarding unexpected </ion-", " proprietary attribute \"ng-"]
+set lcs+=space:·
+set list
 
 " Rainbow parentheses
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['[|', '|]'], ['{', '}']]
 
 " LeaderF
 "let g:Lf_WindowPosition = 'popup'

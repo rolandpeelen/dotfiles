@@ -9,7 +9,7 @@ sudo -v
 ln /System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc /usr/local/bin
 
 
-dotfiles=".bashrc .config .bash_profile .zshrc .gitconfig .gitignore .screenrc"
+dotfiles=".bashrc .config .bash_profile .zshrc .gitconfig .gitignore .screenrc .oh-my-zsh"
 
 ## Replace homedir $dotfiles with the ones from repo
 for file in $dotfiles ; do
