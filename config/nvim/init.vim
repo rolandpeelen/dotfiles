@@ -15,11 +15,9 @@ Plug 'itspriddle/vim-shellcheck'
 " Productivity / UI
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'townk/vim-autoclose'
+Plug 'spf13/vim-autoclose'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -206,18 +204,6 @@ let g:netrw_list_hide='^\.class$,.*\.swp$,.*\.pyc$,.*\.swo$,\.DS_Store$,\.bs\.js
 let g:netrw_hide = 1
 " }}}
 
-" ale
-let g:ale_completion_enabled = 1
-let g:ale_pattern_options_enabled = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-hi link ALEError Error
-hi Warning term=underline cterm=underline ctermfg=Yellow gui=undercurl guisp=Gold
-hi link ALEWarning Warning
-hi link ALEInfo SpellCap
 
 "let g:user_emmet_leader_key='<TAB>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -261,12 +247,6 @@ let g:lightline = {
 			\   'fileformat': 'MyFileformat',
 			\   'readonly': 'LightlineReadonly'
 			\ },
-			\ 'component_expand': {
-			\   'linter_checking': 'lightline#ale#checking',
-			\   'linter_warnings': 'lightline#ale#warnings',
-			\   'linter_errors': 'lightline#ale#errors',
-			\   'linter_ok': 'lightline#ale#ok',
-			\ },
 			\ 'component_type': {
 			\   'linter_checking': 'middle',
 			\   'linter_warnings': 'warning',
@@ -279,11 +259,6 @@ let g:lightline = {
 			\   'paste': '&paste',
 			\ }
 			\ }
-let g:lightline#ale#indicator_checking = "\ue0b8"
-let g:lightline#ale#indicator_warnings = "\uf529"
-let g:lightline#ale#indicator_errors = "\uf00d"
-let g:lightline#ale#indicator_ok = "\uf00c"
-
 function! MyFiletype()
 	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
