@@ -91,7 +91,6 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 let g:LanguageClient_serverCommands = {
 \ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
 \ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
-\ 'javascript': ['typescript-language-server', '--stdio'],
 \ 'rust': ['rust-analyzer'],
 \ 'python': ['/usr/local/bin/pyls'],
 \ }
@@ -120,7 +119,8 @@ set incsearch	    " do incremental searching
 set lz		" Lazy redraw
 set autoindent	    " Automatic indenting, on new line
 set smartindent     " Smart indenting, based on the typed code.
-set smarttab	    " Use tabs at the start of a line, spaces elsewhere.
+set expandtab
+set tabstop=2
 set number  " Line nubmering
 set ignorecase
 set smartcase
