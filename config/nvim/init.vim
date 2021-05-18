@@ -19,16 +19,17 @@ Plug 'spf13/vim-autoclose'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
-Plug 'Yggdroot/LeaderF'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'plasticboy/vim-markdown'
-Plug 'ayu-theme/ayu-vim'
-Plug 'ayu-theme/ayu-vim-airline'
+Plug 'folke/tokyonight.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -47,7 +48,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 			\ 'branch': 'next',
 			\ 'do': 'bash install.sh',
 			\ }
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 call plug#end()
 " }}}
@@ -186,6 +186,12 @@ let g:netrw_hide = 1
 let g:Hexokinase_highlighters = ['virtual']
 
 
+" Telescope
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 
 "let g:user_emmet_leader_key='<TAB>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -193,7 +199,7 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " Lighline
 set noshowmode
 let g:lightline = {
-			\ 'colorscheme': 'ayu',
+			\ 'colorscheme': 'tokyonight',
 			\ 'active': {
 			\   'left': [
 			\     [ 'mode', 'paste' ],
@@ -327,10 +333,11 @@ endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
+let g:tokyonight_style = "night"
 if &t_Co > 2 || has("gui_running")
 	syntax on
 	set hlsearch
-	colorscheme ayu
+	colorscheme tokyonight
 endif
 
 set lcs+=space:·
