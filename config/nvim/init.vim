@@ -90,9 +90,9 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 
 let g:LanguageClient_serverCommands = {
 \ 'reason': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
+\ 'rescript': ['~/Git/dotfiles/config/nvim/plugin/reason-language-server'],
 \ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
 \ 'rust': ['rust-analyzer'],
-\ 'python': ['/usr/local/bin/pyls'],
 \ }
 
 " Disable this for Rust stuff.
@@ -333,7 +333,7 @@ endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-let g:tokyonight_style = "night"
+"let g:tokyonight_style = "night"
 if &t_Co > 2 || has("gui_running")
 	syntax on
 	set hlsearch
@@ -346,9 +346,8 @@ set list
 " Rainbow parentheses
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['[|', '|]'], ['{', '}']]
 
-" LeaderF
-"let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_CommandMap = {'<C-P>': ['<Up>'], '<C-N>': ['<Down>']}
-
-
+" Prettier
+let g:prettier#autoformat = 1
+let g:prettier#exec_cmd_async = 1
+let g:prettier#config#print_width = 80
+let g:prettier#config#tab_width = 2
