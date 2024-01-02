@@ -27,20 +27,22 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.rescriptls.setup({})
-			lspconfig.rust_analyzer.setup({})
-			lspconfig.sqlls.setup({})
-			lspconfig.tsserver.setup({})
-			lspconfig.hls.setup({})
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			lspconfig.lua_ls.setup({ capabilities = capabilities })
+			lspconfig.rescriptls.setup({ capabilities = capabilities })
+			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+			lspconfig.sqlls.setup({ capabilities = capabilities })
+			lspconfig.tsserver.setup({ capabilities = capabilities })
+			lspconfig.hls.setup({ capabilities = capabilities })
 			lspconfig.elixirls.setup({
 				cmd = { "/Users/rwjpeelen/Git/tools/elixir-ls/release/language_server.sh" },
 				filetypes = { "ex", "exs", "elixir" },
 				root_dir = lspconfig.util.root_pattern("mix.exs"),
+				capabilities = capabilities,
 			})
-			lspconfig.cssls.setup({})
-			lspconfig.bashls.setup({})
-			lspconfig.ocamllsp.setup({})
+			lspconfig.cssls.setup({ capabilities = capabilities })
+			lspconfig.bashls.setup({ capabilities = capabilities })
+			lspconfig.ocamllsp.setup({ capabilities = capabilities })
 
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})

@@ -39,3 +39,9 @@ let g:prettier#autoformat = 1
 let g:prettier#exec_cmd_async = 1
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
+
+augroup YankHighlight
+        autocmd!
+        autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+augroup end
+
