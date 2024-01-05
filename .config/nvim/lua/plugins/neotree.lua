@@ -163,7 +163,7 @@ return {
 						--"*/src/*/tsconfig.json",
 					},
 					always_show = { -- remains visible even if other settings would normally hide it
-						--".gitignored",
+						".gitignore",
 					},
 					never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 						--".DS_Store",
@@ -265,7 +265,7 @@ return {
 		})
 
 		vim.cmd("nmap <leader>s :Neotree float git_status<CR>")
-		vim.cmd("nmap <leader>k :Neotree float<CR>")
+		vim.cmd("nmap <leader>k :Neotree position=current float<CR>")
 		vim.cmd("nmap <leader>l :Neotree left<CR>")
 	end,
 }
