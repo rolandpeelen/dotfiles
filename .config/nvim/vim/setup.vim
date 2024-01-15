@@ -26,6 +26,7 @@ set cursorline
 set nolazyredraw
 set titlestring=VIM:\ %-t\ %y\ %a%r%m titlelen=70
 
+map <silent> <Leader>k :Explore<CR>
 map <silent> t<Right> :tabnext<CR>
 map <silent> t<Left> :tabprev<CR>
 map <silent> tn :tabnew<CR>
