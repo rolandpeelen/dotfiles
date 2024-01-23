@@ -18,16 +18,16 @@ return {
 					"hls",
 					"cssls",
 					"bashls",
-					"ocamllsp",
 				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		config = function()
+		config = function(_, opts)
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.rescriptls.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
@@ -43,11 +43,13 @@ return {
 			lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.bashls.setup({ capabilities = capabilities })
 			lspconfig.ocamllsp.setup({ capabilities = capabilities })
+			lspconfig.ocamllsp.mason = false
 
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, {})
 			vim.keymap.set("n", "gf", vim.lsp.buf.format, {})
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "<CR>", vim.lsp.buf.hover, {})
 		end,
 	},
