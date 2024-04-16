@@ -61,7 +61,7 @@ alias gstp='git stash pop'
 alias gsts='git stash save'
 
 # Plugins
-plugins=(git fzf-tab ssh-agent)
+plugins=(git fzf fzf-tab ssh-agent)
 eval `keychain --eval --agents ssh --inherit any id_rsa &> /dev/null`
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh

@@ -19,6 +19,7 @@ return {
                                         "cssls",
                                         "bashls",
                                         "swift_mesonls",
+                                        "elixirls"
                                 },
                         })
                 end,
@@ -36,7 +37,7 @@ return {
                         lspconfig.tsserver.setup({ capabilities = capabilities })
                         lspconfig.hls.setup({ capabilities = capabilities })
                         lspconfig.elixirls.setup({
-                                cmd = { "/Users/rwjpeelen/Git/tools/elixir-ls/release/language_server.sh" },
+                                cmd = { "/Users/rwjpeelen/.local/share/nvim/mason/bin/elixir-ls" },
                                 filetypes = { "ex", "exs", "elixir" },
                                 root_dir = lspconfig.util.root_pattern("mix.exs"),
                                 capabilities = capabilities,
