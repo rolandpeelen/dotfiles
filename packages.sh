@@ -66,7 +66,7 @@ curl -s https://raw.githubusercontent.com/vineetchoudhary/Downloader-for-Apple-D
 ## ----------------------------------------------------------------------------
 bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
 opam init
-opam switch create 4.14.0 # Pinned because no 'latest'
+opam switch create 5.11.1 # Pinned because no 'latest'
 
 ## ----------------------------------------------------------------------------
 ## Rust
