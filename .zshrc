@@ -1,7 +1,7 @@
 #lis Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME="clean"
+ZSH_THEME="agnoster"
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
@@ -71,8 +71,8 @@ source $HOME/.cargo/env # Rust env
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
 # Esy
-#export ESYPATH=$HOME/Git/open-source/esy/_build/install/default/bin
-#export PATH=$PATH:$ESYPATH
+export HASKELL_BIN=/Users/rwjpeelen/.local/bin
+export PATH=$PATH:$HASKELL_BIN
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -134,3 +134,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 [ -f "/Users/rwjpeelen/.ghcup/env" ] && source "/Users/rwjpeelen/.ghcup/env" # ghcup-env
+
+# pnpm
+export PNPM_HOME="/Users/rwjpeelen/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

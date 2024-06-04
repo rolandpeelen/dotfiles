@@ -1,3 +1,5 @@
+filetype plugin on
+
 set backupskip=/tmp/*,/private/tmp/*
 set history=250
 set ruler
@@ -45,3 +47,5 @@ augroup YankHighlight
         autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 augroup end
 
+" SQL-ls
+let g:sql_type_default = 'pgsql'
