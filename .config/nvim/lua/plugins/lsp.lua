@@ -12,16 +12,18 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"zls",
 					"lua_ls",
+					"pylsp",
 					"rescriptls",
 					"rust_analyzer",
-					"sqlls",
-					"tsserver",
+					"ts_ls",
 					"hls",
 					"cssls",
 					"bashls",
-					"swift_mesonls",
 					"elixirls",
+					"prettier",
+					"tailwindcss",
 				},
 			})
 		end,
@@ -31,7 +33,9 @@ return {
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			lspconfig.zls.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
+			lspconfig.pylsp.setup({ capabilities = capabilities })
 			lspconfig.rescriptls.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 
@@ -43,14 +47,21 @@ return {
 					return vim.loop.cwd()
 				end,
 			})
-
-			lspconfig.tsserver.setup({ capabilities = capabilities })
+			lspconfig.prettier.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.ts_ls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.hls.setup({ capabilities = capabilities })
 			lspconfig.elixirls.setup({
 				cmd = { "/Users/rwjpeelen/.local/share/nvim/mason/bin/elixir-ls" },
 				filetypes = { "ex", "exs", "elixir" },
 				root_dir = lspconfig.util.root_pattern("mix.exs"),
-				capabilities = capabilities,
+				capabilties = capabilities,
 			})
 			lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.bashls.setup({ capabilities = capabilities })

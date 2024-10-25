@@ -1,3 +1,6 @@
+:t sequence
+sequence Just 5 Just 5
+Just 5 <*> Just 5
 Just (const 0) <*> Nothing
 Just (cons 0) <*> Nothing
 Just 0 <$> Nothing

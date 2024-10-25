@@ -20,6 +20,11 @@ alias vim="nvim"
 alias evim="esy nvim"
 alias vi="nvim"
 alias gt="nocorrect gt"
+killAll () {
+  ps aux | grep $1 | awk '{print $2}' | xargs kill -9
+}
+
+alias ghostty="/Applications/Ghostty.app/Contents/MacOS/ghostty"
 
 # ----------------------
 # Git Aliases
@@ -70,12 +75,10 @@ export EDITOR="nvim"
 source $HOME/.cargo/env # Rust env
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
-# Esy
 export HASKELL_BIN=/Users/rwjpeelen/.local/bin
 export PATH=$PATH:$HASKELL_BIN
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
 . /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
@@ -83,6 +86,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=$PATH:/opt/homebrew/opt/postgresql@15/bin
 
 export GPG_TTY=$(tty)
+
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
@@ -98,6 +102,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
 
 # For pkg-config to find libffi you may need to set:
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+
 #compdef gt
 ###-begin-gt-completions-###
 #
@@ -127,10 +132,6 @@ compdef _gt_yargs_completions gt
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 [ -f "/Users/rwjpeelen/.ghcup/env" ] && source "/Users/rwjpeelen/.ghcup/env" # ghcup-env
@@ -142,3 +143,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export DENO_INSTALL="/Users/rwjpeelen/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Make libsoup available on path 3.6.0
+export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/libsoup/3.6.0/lib:DYLD_LIBRARY_PATH
+

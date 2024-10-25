@@ -26,7 +26,7 @@ done
 ## Utils
 ## ---------------------------------------------------------------------------- 
 brews="asdf curl git neovim llvm openssl ripgrep sourcetree tmux tmuxinator
-yabai zsh difftastic mkcert elixir-ls pwgen gpg keychain"
+yabai zsh difftastic mkcert pwgen gpg keychain"
 for b in $brews ; do
         echo "Installing: ${b}"
         brew install ${b}
@@ -48,7 +48,7 @@ done
 ## Asdf
 ## ----------------------------------------------------------------------------
 . /opt/homebrew/bin/asdf.sh
-asdfs="elixir erlang nodejs python"
+asdfs="nodejs"
 
 for asdf in $asdfs ; do
         asdf plugin add ${asdf}

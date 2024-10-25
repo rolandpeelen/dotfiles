@@ -26,6 +26,7 @@ set linebreak
 set cursorline
 set nolazyredraw
 set titlestring=VIM:\ %-t\ %y\ %a%r%m titlelen=70
+set relativenumber
 
 map <silent> <Leader>k :Explore<CR>
 map <silent> t<Right> :tabnext<CR>
@@ -48,4 +49,5 @@ augroup YankHighlight
 augroup end
 
 " SQL-ls
-let g:sql_type_default = 'pgsql'
+let g:netrw_list_hide= '*.bs.js'
+

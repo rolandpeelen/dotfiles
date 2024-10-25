@@ -8,7 +8,7 @@
 [user]
 	name = Roland Peelen
 	email = roland@peppr.nl
-	signingkey = C4767F3BD8F4ACF1
+	signingkey = 0C86A4D049B60995
 [push]
 	default = upstream
 	autoSetupRemote = true
@@ -29,3 +29,8 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
