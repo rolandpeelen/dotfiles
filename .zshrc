@@ -150,3 +150,5 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # Make libsoup available on path 3.6.0
 export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/libsoup/3.6.0/lib:DYLD_LIBRARY_PATH
 
+# Use Starship
+eval "$(starship init zsh)"
