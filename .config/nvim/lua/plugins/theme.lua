@@ -5,8 +5,8 @@ return {
 	opts = {},
 	config = function()
 		require("catppuccin").setup({
-			flavour = "mocha", -- latte, frappe, macchiato, mocha
-			-- flavour = "auto" -- will respect terminal's background
+			-- flavour = "latte", -- latte, frappe, macchiato, mocha
+			flavour = "auto", -- will respect terminal's background
 			transparent_background = false, -- disables setting the background color.
 			show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
 			term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)

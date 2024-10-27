@@ -27,4 +27,9 @@ node_modules
 .config/configstore/
 .config/btop/
 .config/htop/
+.config/raycast/
 rewatch.lock
+
+
+# rclone config files
+.config/rclone/*.conf

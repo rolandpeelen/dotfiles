@@ -1,6 +1,5 @@
 return {
 	{ "ahrefs/vim-styled-ppx" },
-	{ "supabase-community/postgres_lsp" },
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -16,14 +15,14 @@ return {
 					"lua_ls",
 					"pylsp",
 					"rescriptls",
-					"rust_analyzer",
+					"rust_analyzer@2024-10-21",
 					"ts_ls",
 					"hls",
+					"sqls",
 					"cssls",
 					"bashls",
-					"elixirls",
-					"prettier",
 					"tailwindcss",
+					"texlab",
 				},
 			})
 		end,
@@ -33,36 +32,84 @@ return {
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			lspconfig.texlab.setup({ capabilities = capabilities })
+
 			lspconfig.zls.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({ capabilities = capabilities })
-			lspconfig.rescriptls.setup({ capabilities = capabilities })
-			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-
-			lspconfig.postgres_lsp.setup({
-				force_setup = true,
-				filetypes = { "sql" },
-				single_file_support = true,
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-			})
-			lspconfig.prettier.setup({
+			lspconfig.sqls.setup({ capabilities = capabilities })
+			lspconfig.rescriptls.setup({
 				capabilities = capabilities,
+				settings = {
+					extensionConfiguration = {
+						allowBuiltInFormatter = true,
+						askToStartBuild = false,
+						cache = {
+							projectConfig = {
+								enabled = true,
+							},
+						},
+						codeLens = true,
+						incrementalTypechecking = {
+							acrossFiles = true,
+							enabled = true,
+						},
+						inlayHints = {
+							enable = true,
+						},
+					},
+				},
 			})
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						check = {
+							command = "clippy",
+						},
+						diagnostics = {
+							enable = true,
+						},
+						inlayHints = {
+							chainingHints = true,
+							typeHints = true,
+							parameterHints = true,
+							bindingModeHints = {
+								enable = true,
+							},
+							closureCaptureHints = {
+								enable = true,
+							},
+						},
+					},
+				},
+			})
+
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
+				-- other options
+				init_options = {
+					userLanguages = {},
+				},
+				filetypes = {
+					"css",
+					"scss",
+					"sass",
+					"html",
+					"reason",
+					"reasonml",
+					"rescript",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+				},
 			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.hls.setup({ capabilities = capabilities })
-			lspconfig.elixirls.setup({
-				cmd = { "/Users/rwjpeelen/.local/share/nvim/mason/bin/elixir-ls" },
-				filetypes = { "ex", "exs", "elixir" },
-				root_dir = lspconfig.util.root_pattern("mix.exs"),
-				capabilties = capabilities,
-			})
 			lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.bashls.setup({ capabilities = capabilities })
 			lspconfig.ocamllsp.setup({ capabilities = capabilities })

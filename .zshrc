@@ -2,24 +2,18 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="agnoster"
-
-ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd/mm/yyyy"
 
 # ----------------------
 # Aliases
 # ----------------------
-notify_cmd() { "$@"; afplay /System/Library/Sounds/Funk.aiff; }
-alias n=notify_cmd
 alias genPass='pwgen -s 25 | head | pbcopy'
 alias gitFolder="cd ~/Git"
 alias cl="clear"
-alias ll="ls -la"
+alias ll="ls -lsa"
 alias vim="nvim"
-alias evim="esy nvim"
 alias vi="nvim"
-alias gt="nocorrect gt"
 killAll () {
   ps aux | grep $1 | awk '{print $2}' | xargs kill -9
 }
@@ -66,87 +60,75 @@ alias gstp='git stash pop'
 alias gsts='git stash save'
 
 # Plugins
-plugins=(git fzf fzf-tab ssh-agent)
+plugins=(git fzf-tab ssh-agent web-search)
 eval `keychain --eval --agents ssh --inherit any id_rsa &> /dev/null`
+
+# Enable Tmux  Popup for fzf-tab
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 
+# Language Support
+## Haskell
+export HASKELL_BIN=/Users/rwjpeelen/.local/bin
+export PATH=$PATH:$HASKELL_BIN
+[ -f "/Users/rwjpeelen/.ghcup/env" ] && source "/Users/rwjpeelen/.ghcup/env" # ghcup-env
+
+## opam configuration
+[[ ! -r /Users/rwjpeelen/.opam/opam-init/init.zsh ]] || source /Users/rwjpeelen/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+## rust
 source $HOME/.cargo/env # Rust env
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
-export HASKELL_BIN=/Users/rwjpeelen/.local/bin
-export PATH=$PATH:$HASKELL_BIN
-
+## Brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+. /opt/homebrew/share/zsh/site-functions
 
 
-export PATH=$PATH:/opt/homebrew/opt/postgresql@15/bin
 
-export GPG_TTY=$(tty)
-
+# For normal llvm
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
+# For llvm 13
 export PATH="/opt/homebrew/opt/llvm@13/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm@13/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm@13/include"
 
-
 # For compilers to find libffi you may need to set:
 export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
-
-# For pkg-config to find libffi you may need to set:
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 
-#compdef gt
-###-begin-gt-completions-###
-#
-# yargs command completion script
-#
-# Installation: /opt/homebrew/Cellar/graphite/0.20.19/bin/gt completion >> ~/.zshrc
-#    or /opt/homebrew/Cellar/graphite/0.20.19/bin/gt completion >> ~/.zprofile on OSX.
-#
-_gt_yargs_completions()
-{
-  local reply
-  local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /opt/homebrew/Cellar/graphite/0.20.19/bin/gt --get-yargs-completions "${words[@]}"))
-  IFS=$si
-  _describe 'values' reply
-}
-compdef _gt_yargs_completions gt
-###-end-gt-completions-###
 
-# opam configuration
-[[ ! -r /Users/rwjpeelen/.opam/opam-init/init.zsh ]] || source /Users/rwjpeelen/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-# bun completions
-[ -s "/Users/rwjpeelen/.bun/_bun" ] && source "/Users/rwjpeelen/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# Homebrew stuff
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
+export DYLD_LIBRARY_PATH="/opt/homebrew/Cellar/libsoup/3.6.0/lib:$DYLD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/icu4c/lib/pkgconfig:/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
 
-[ -f "/Users/rwjpeelen/.ghcup/env" ] && source "/Users/rwjpeelen/.ghcup/env" # ghcup-env
-
-# pnpm
-export PNPM_HOME="/Users/rwjpeelen/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-export DENO_INSTALL="/Users/rwjpeelen/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Make libsoup available on path 3.6.0
 export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/libsoup/3.6.0/lib:DYLD_LIBRARY_PATH
 
+# Add postgresql from gui 
+export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:$PATH"
+
+# Re-export tty so gpg works
+export GPG_TTY=$(tty)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rwjpeelen/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rwjpeelen/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rwjpeelen/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rwjpeelen/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+#     export TERM=xterm-256color
+# fi
+#
+source $ZSH/oh-my-zsh.sh

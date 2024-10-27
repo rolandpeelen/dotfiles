@@ -1,5 +1,11 @@
 [color]
 	ui = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
 [core]
 	excludesfile = /Users/rwjpeelen/.gitignore_global
 	autocrlf = false
@@ -7,11 +13,21 @@
 	sparseCheckout = false
 [user]
 	name = Roland Peelen
-	email = roland@peppr.nl
-	signingkey = 0C86A4D049B60995
+	email = rolandpeelen@gmail.com
+	signingkey = B1EE26699E316CFA
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [push]
 	default = upstream
 	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [commit]
 	template = ~/.stdCommitMessage
 	gpgsign = true
@@ -20,17 +36,9 @@
 [pull]
 	ff = only
 [merge]
-	conflictstyle = diff3
-[diff]
-	external = difft
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	conflictstyle = zdiff3
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
+	prequired = true
