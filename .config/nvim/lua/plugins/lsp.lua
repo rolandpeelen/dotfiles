@@ -16,13 +16,12 @@ return {
 					"lua_ls",
 					"pylsp",
 					"rescriptls",
-					"rust_analyzer",
+					"rust_analyzer@2024-10-21",
 					"ts_ls",
 					"hls",
 					"cssls",
 					"bashls",
 					"elixirls",
-					"prettier",
 					"tailwindcss",
 				},
 			})
@@ -37,7 +36,30 @@ return {
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({ capabilities = capabilities })
 			lspconfig.rescriptls.setup({ capabilities = capabilities })
-			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						check = {
+							command = "clippy",
+						},
+						diagnostics = {
+							enable = true,
+						},
+						inlayHints = {
+							chainingHints = true,
+							typeHints = true,
+							parameterHints = true,
+							bindingModeHints = {
+								enable = true,
+							},
+							closureCaptureHints = {
+								enable = true,
+							},
+						},
+					},
+				},
+			})
 
 			lspconfig.postgres_lsp.setup({
 				force_setup = true,
@@ -46,9 +68,6 @@ return {
 				root_dir = function()
 					return vim.loop.cwd()
 				end,
-			})
-			lspconfig.prettier.setup({
-				capabilities = capabilities,
 			})
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,

@@ -7,8 +7,8 @@
 	sparseCheckout = false
 [user]
 	name = Roland Peelen
-	email = roland@peppr.nl
-	signingkey = 0C86A4D049B60995
+	email = rolandpeelen@gmail.com
+	signingkey = B1EE26699E316CFA
 [push]
 	default = upstream
 	autoSetupRemote = true
@@ -23,12 +23,6 @@
 	conflictstyle = diff3
 [diff]
 	external = difft
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
