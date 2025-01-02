@@ -1,6 +1,5 @@
 return {
 	{ "ahrefs/vim-styled-ppx" },
-	{ "supabase-community/postgres_lsp" },
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -19,6 +18,7 @@ return {
 					"rust_analyzer@2024-10-21",
 					"ts_ls",
 					"hls",
+					"sqls",
 					"cssls",
 					"bashls",
 					"elixirls",
@@ -35,6 +35,7 @@ return {
 			lspconfig.zls.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({ capabilities = capabilities })
+			lspconfig.sqls.setup({ capabilities = capabilities })
 			lspconfig.rescriptls.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
@@ -61,14 +62,6 @@ return {
 				},
 			})
 
-			lspconfig.postgres_lsp.setup({
-				force_setup = true,
-				filetypes = { "sql" },
-				single_file_support = true,
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-			})
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
 			})

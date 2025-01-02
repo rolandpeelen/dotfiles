@@ -1,0 +1,210 @@
+2024-12-15 00:07:25,101 DEBUG    root            Loaded Command Group: ['gcloud', 'init']
+2024-12-15 00:07:25,102 DEBUG    root            Running [gcloud.init] with arguments: []
+2024-12-15 00:07:25,102 INFO     ___FILE_ONLY___ Welcome! This command will take you through the configuration of gcloud.
+
+
+2024-12-15 00:07:25,103 INFO     ___FILE_ONLY___ Your current configuration has been set to: [default]
+
+
+2024-12-15 00:07:25,103 INFO     ___FILE_ONLY___ You can skip diagnostics next time by using the following flag:
+
+2024-12-15 00:07:25,103 INFO     ___FILE_ONLY___   gcloud init --skip-diagnostics
+
+
+2024-12-15 00:07:25,103 INFO     ___FILE_ONLY___ Network diagnostic detects and fixes local network connection issues.
+
+2024-12-15 00:07:25,103 INFO     ___FILE_ONLY___ Checking network connection...
+2024-12-15 00:07:26,047 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): accounts.google.com:443
+2024-12-15 00:07:26,091 DEBUG    urllib3.connectionpool https://accounts.google.com:443 "GET / HTTP/1.1" 302 365
+2024-12-15 00:07:26,116 DEBUG    urllib3.connectionpool https://accounts.google.com:443 "GET /ServiceLogin?passive=1209600&continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F HTTP/1.1" 302 0
+2024-12-15 00:07:26,171 DEBUG    urllib3.connectionpool https://accounts.google.com:443 "GET /InteractiveLogin?continue=https://accounts.google.com/&followup=https://accounts.google.com/&passive=1209600&ifkv=AeZLP9_XRaeE2o-Ee5cuObaS1zoEzE9g5ygThfXV1IclYJynfJ4TSwaNbyF6Wlc5AuNs7Xri9sdY HTTP/1.1" 302 552
+2024-12-15 00:07:26,205 DEBUG    urllib3.connectionpool https://accounts.google.com:443 "GET /v3/signin/identifier?continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F&ifkv=AeZLP99mAfYvQ_cy5WRBbVBCExBz6AaOlBcfWEDHWw5caJ1-znk3canrD3dtJDTJaLy_V6UvHkaL&passive=1209600&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S-636764149%3A1734217646160085 HTTP/1.1" 200 None
+2024-12-15 00:07:26,234 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2024-12-15 00:07:26,844 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1beta1/projects HTTP/1.1" 401 None
+2024-12-15 00:07:26,852 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): www.googleapis.com:443
+2024-12-15 00:07:26,898 DEBUG    urllib3.connectionpool https://www.googleapis.com:443 "GET /auth/cloud-platform HTTP/1.1" 200 14
+2024-12-15 00:07:26,904 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): dl.google.com:443
+2024-12-15 00:07:26,953 DEBUG    urllib3.connectionpool https://dl.google.com:443 "GET /dl/cloudsdk/channels/rapid/components-2.json HTTP/1.1" 200 227817
+2024-12-15 00:07:27,172 INFO     ___FILE_ONLY___ Reachability Check passed.
+
+2024-12-15 00:07:27,172 INFO     ___FILE_ONLY___ Network diagnostic passed (1/1 checks passed).
+
+
+2024-12-15 00:07:28,927 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2024-12-15 00:07:28,967 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'login']
+2024-12-15 00:07:28,969 INFO     root            Executing: [gcloud auth login --force --brief]
+2024-12-15 00:07:28,971 DEBUG    root            Running [gcloud.auth.login] with arguments: [--brief: "True", --force: "True"]
+2024-12-15 00:07:29,062 DEBUG    requests_oauthlib.oauth2_session Generated new state NDYLoCLszsyPKsByXGBFPY98dqnAxR.
+2024-12-15 00:07:29,193 INFO     ___FILE_ONLY___ Your browser has been opened to visit:
+
+    https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=32555940559.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8085%2F&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fappengine.admin+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fsqlservice.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcompute+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Faccounts.reauth&state=NDYLoCLszsyPKsByXGBFPY98dqnAxR&access_type=offline&code_challenge=azPTmcmyO_5ZKBG-tyzJoyOE-tX0S82S_0PakDYSt6Q&code_challenge_method=S256
+
+
+2024-12-15 00:07:35,263 INFO     google_auth_oauthlib.flow "GET /?state=NDYLoCLszsyPKsByXGBFPY98dqnAxR&code=4/0AanRRrsDy9oMsqHlv_0Vz6HHbIAKEIJcAn56SHEe6znRwcvl57yoX5RdlOoNm6WsdNDVvA&scope=email%20openid%20https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/cloud-platform%20https://www.googleapis.com/auth/appengine.admin%20https://www.googleapis.com/auth/sqlservice.login%20https://www.googleapis.com/auth/compute%20https://www.googleapis.com/auth/accounts.reauth&authuser=2&prompt=consent HTTP/1.1" 200 937
+2024-12-15 00:07:35,264 DEBUG    requests_oauthlib.oauth2_session Requesting url https://oauth2.googleapis.com/token using method POST.
+2024-12-15 00:07:35,264 DEBUG    requests_oauthlib.oauth2_session Supplying headers {b'Accept': b'application/json', b'Content-Type': b'application/x-www-form-urlencoded;charset=UTF-8', b'user-agent': b'google-cloud-sdk gcloud/503.0.0 command/gcloud.auth.login invocation-id/f2395323d8ac4f53a7a5d6d2afabf373 environment/None environment-version/None client-os/MACOSX client-os-ver/24.1.0 client-pltf-arch/arm interactive/True from-script/False python/3.12.3 term/tmux-256color (Macintosh; Intel Mac OS X 24.1.0)'} and data {'grant_type': 'authorization_code', 'client_id': '32555940559.apps.googleusercontent.com', 'client_secret': 'ZmssLNjJy2998hD4CTg2ejr2', 'code': '4/0AanRRrsDy9oMsqHlv_0Vz6HHbIAKEIJcAn56SHEe6znRwcvl57yoX5RdlOoNm6WsdNDVvA', 'redirect_uri': 'http://localhost:8085/', 'code_verifier': '2yWoQOtlp38oKAjlSnqN_F3XpWf_pYta.xyKRAzVbt2OVKMs0mA8jLJGmKI34zKUYCwWsQIeCYTvQwhtseLgpeWPAZtyRIawroRK4Hcu0aoLJZoKMnJfUut9XJ_SFdVl'}
+2024-12-15 00:07:35,264 DEBUG    requests_oauthlib.oauth2_session Passing through key word arguments {'json': None, 'timeout': None, 'auth': None, 'verify': None, 'proxies': None}.
+2024-12-15 00:07:35,266 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2024-12-15 00:07:35,351 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2024-12-15 00:07:35,353 DEBUG    requests_oauthlib.oauth2_session Prepared fetch token request body grant_type=authorization_code&client_id=32555940559.apps.googleusercontent.com&client_secret=ZmssLNjJy2998hD4CTg2ejr2&code=4%2F0AanRRrsDy9oMsqHlv_0Vz6HHbIAKEIJcAn56SHEe6znRwcvl57yoX5RdlOoNm6WsdNDVvA&redirect_uri=http%3A%2F%2Flocalhost%3A8085%2F&code_verifier=2yWoQOtlp38oKAjlSnqN_F3XpWf_pYta.xyKRAzVbt2OVKMs0mA8jLJGmKI34zKUYCwWsQIeCYTvQwhtseLgpeWPAZtyRIawroRK4Hcu0aoLJZoKMnJfUut9XJ_SFdVl
+2024-12-15 00:07:35,353 DEBUG    requests_oauthlib.oauth2_session Request to fetch token completed with status 200.
+2024-12-15 00:07:35,353 DEBUG    requests_oauthlib.oauth2_session Request headers were {'user-agent': b'google-cloud-sdk gcloud/503.0.0 command/gcloud.auth.login invocation-id/f2395323d8ac4f53a7a5d6d2afabf373 environment/None environment-version/None client-os/MACOSX client-os-ver/24.1.0 client-pltf-arch/arm interactive/True from-script/False python/3.12.3 term/tmux-256color (Macintosh; Intel Mac OS X 24.1.0)', 'Accept-Encoding': 'gzip, deflate', 'Accept': b'application/json', 'Connection': 'keep-alive', 'Content-Type': b'application/x-www-form-urlencoded;charset=UTF-8', 'Content-Length': '387'}
+2024-12-15 00:07:35,353 DEBUG    requests_oauthlib.oauth2_session Request body was grant_type=authorization_code&client_id=32555940559.apps.googleusercontent.com&client_secret=ZmssLNjJy2998hD4CTg2ejr2&code=4%2F0AanRRrsDy9oMsqHlv_0Vz6HHbIAKEIJcAn56SHEe6znRwcvl57yoX5RdlOoNm6WsdNDVvA&redirect_uri=http%3A%2F%2Flocalhost%3A8085%2F&code_verifier=2yWoQOtlp38oKAjlSnqN_F3XpWf_pYta.xyKRAzVbt2OVKMs0mA8jLJGmKI34zKUYCwWsQIeCYTvQwhtseLgpeWPAZtyRIawroRK4Hcu0aoLJZoKMnJfUut9XJ_SFdVl
+2024-12-15 00:07:35,353 DEBUG    requests_oauthlib.oauth2_session Response headers were {'Expires': 'Mon, 01 Jan 1990 00:00:00 GMT', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Date': 'Sat, 14 Dec 2024 23:07:35 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Vary': 'Origin, X-Origin, Referer', 'Content-Encoding': 'gzip', 'Server': 'scaffolding on HTTPServer2', 'X-XSS-Protection': '0', 'X-Frame-Options': 'SAMEORIGIN', 'X-Content-Type-Options': 'nosniff', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} and content {
+  "access_token": "ya29.a0ARW5m75rz3L-saf9yyy2DMUaUG8IceI-i5x8MgOVe00V_iw2nyOf5qLb7-VUOwWPDF2JmKTAJgD9t2hoOupnVnjWbQuXpuQCxpwJ_mnwnmFeokupqKdAiKeYZbIZNF5zdOPuw0LiDFYZPf1aSD6p7uQZvKbHNoy7m8ZoJEYyFNimzQaCgYKAWYSARESFQHGX2Mi0gHpSJ-0cMZ5tdTzu6371Q0181",
+  "expires_in": 3599,
+  "refresh_token": "1//09n-fLFib6Q4gCgYIARAAGAkSNwF-L9IrEBFoOeoj1euEP5g87VlPvhQp13sIkcS9_PuQwF0pIF46YJyMhuiI-3DLlZfJhQpV1es",
+  "scope": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/compute https://www.googleapis.com/auth/sqlservice.login https://www.googleapis.com/auth/appengine.admin https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/accounts.reauth openid",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2NGZlYWNlYzNlYmRmYWE3MzExYjlkOGU3M2M0MjgxOGYyOTEyNjQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxNzQ1NzUyODkzMzcwMjkwNTkzIiwiZW1haWwiOiJyb2xhbmRwZWVsZW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiI4NG9uNHd4Z0hlemxyOGFkeDVMVy1RIiwiaWF0IjoxNzM0MjE3NjU1LCJleHAiOjE3MzQyMjEyNTV9.milUSQ0Zha0i96a1IyLNmE9ytTVXRcgI0r0sikCGJ6jP-UhsazJ-Pn4wh8n9PhOI2cQuCMR6RvoqKsM6Jtx4fWBvxpepc7u_tzg3YLP0YqMwv-2FH9qXXB7bMEgUeEASViXVOR6LH0-WQid6P43MVsIPVBIDQF9LAexO_f07m9x4Cw8ouOQnx8XQ4Iw8h4eOYFDwvorxSuJOuIlzi6834pJY6BpBn0E6zGkW5Ja-nNgv7IE1iyWtLZ-dQuq7kV7K6ti5dAYymDcCqJ1m7uRn-T-yv-tNBfYrbaGtw5rsrKKOaMmCTp51P8Oui6TTIa4u93pdXUzmUjMc2Usef_WV6Q"
+}.
+2024-12-15 00:07:35,354 DEBUG    requests_oauthlib.oauth2_session Invoking 0 token response hooks.
+2024-12-15 00:07:35,354 DEBUG    requests_oauthlib.oauth2_session Obtained token {'access_token': 'ya29.a0ARW5m75rz3L-saf9yyy2DMUaUG8IceI-i5x8MgOVe00V_iw2nyOf5qLb7-VUOwWPDF2JmKTAJgD9t2hoOupnVnjWbQuXpuQCxpwJ_mnwnmFeokupqKdAiKeYZbIZNF5zdOPuw0LiDFYZPf1aSD6p7uQZvKbHNoy7m8ZoJEYyFNimzQaCgYKAWYSARESFQHGX2Mi0gHpSJ-0cMZ5tdTzu6371Q0181', 'expires_in': 3599, 'refresh_token': '1//09n-fLFib6Q4gCgYIARAAGAkSNwF-L9IrEBFoOeoj1euEP5g87VlPvhQp13sIkcS9_PuQwF0pIF46YJyMhuiI-3DLlZfJhQpV1es', 'scope': ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/compute', 'https://www.googleapis.com/auth/sqlservice.login', 'https://www.googleapis.com/auth/appengine.admin', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/accounts.reauth', 'openid'], 'token_type': 'Bearer', 'id_token': 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjU2NGZlYWNlYzNlYmRmYWE3MzExYjlkOGU3M2M0MjgxOGYyOTEyNjQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxNzQ1NzUyODkzMzcwMjkwNTkzIiwiZW1haWwiOiJyb2xhbmRwZWVsZW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiI4NG9uNHd4Z0hlemxyOGFkeDVMVy1RIiwiaWF0IjoxNzM0MjE3NjU1LCJleHAiOjE3MzQyMjEyNTV9.milUSQ0Zha0i96a1IyLNmE9ytTVXRcgI0r0sikCGJ6jP-UhsazJ-Pn4wh8n9PhOI2cQuCMR6RvoqKsM6Jtx4fWBvxpepc7u_tzg3YLP0YqMwv-2FH9qXXB7bMEgUeEASViXVOR6LH0-WQid6P43MVsIPVBIDQF9LAexO_f07m9x4Cw8ouOQnx8XQ4Iw8h4eOYFDwvorxSuJOuIlzi6834pJY6BpBn0E6zGkW5Ja-nNgv7IE1iyWtLZ-dQuq7kV7K6ti5dAYymDcCqJ1m7uRn-T-yv-tNBfYrbaGtw5rsrKKOaMmCTp51P8Oui6TTIa4u93pdXUzmUjMc2Usef_WV6Q', 'expires_at': 1734221254.354243}.
+2024-12-15 00:07:35,371 DEBUG    root            Chosen display Format:none
+2024-12-15 00:07:35,372 INFO     root            Display format: "none"
+2024-12-15 00:07:35,383 DEBUG    root            Checking for updates...
+2024-12-15 00:07:35,385 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): dl.google.com:443
+2024-12-15 00:07:35,418 DEBUG    urllib3.connectionpool https://dl.google.com:443 "GET /dl/cloudsdk/channels/rapid/components-2.json HTTP/1.1" 200 227817
+2024-12-15 00:07:35,456 DEBUG    root            Updating notification cache...
+2024-12-15 00:07:35,457 INFO     ___FILE_ONLY___ You are signed in as: [rolandpeelen@gmail.com].
+
+
+2024-12-15 00:07:35,481 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
+2024-12-15 00:07:36,289 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects?alt=json&filter=lifecycleState%3AACTIVE&pageSize=201 HTTP/1.1" 200 None
+2024-12-15 00:07:42,914 INFO     ___FILE_ONLY___ Your current project has been set to: [tpcc-444519].
+
+
+2024-12-15 00:07:43,025 DEBUG    root            Loaded Command Group: ['gcloud', 'compute']
+2024-12-15 00:07:43,027 DEBUG    root            Loaded Command Group: ['gcloud', 'compute', 'project_info']
+2024-12-15 00:07:43,047 DEBUG    root            Loaded Command Group: ['gcloud', 'compute', 'project-info', 'describe']
+2024-12-15 00:07:43,047 INFO     root            Executing: [gcloud compute project-info describe --quiet]
+2024-12-15 00:07:43,048 DEBUG    root            Running [gcloud.compute.project-info.describe] with arguments: [--no-user-output-enabled: "false", --quiet: "True", --verbosity: "none"]
+2024-12-15 00:07:43,301 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): compute.googleapis.com:443
+2024-12-15 00:07:43,490 DEBUG    urllib3.connectionpool https://compute.googleapis.com:443 "GET /compute/v1/projects/tpcc-444519?alt=json HTTP/1.1" 403 None
+2024-12-15 00:07:43,495 DEBUG    root            Chosen display Format:value(links.flatten(show="values",separator="
+"))
+2024-12-15 00:07:43,496 DEBUG    root            Chosen display Format:default
+2024-12-15 00:07:43,499 DEBUG    root            Chosen display Format:value(links.flatten(show="values",separator="
+"))
+2024-12-15 00:07:43,499 DEBUG    root            Chosen display Format:default
+2024-12-15 00:07:43,501 DEBUG    root            Chosen display Format:value(links.flatten(show="values",separator="
+"))
+2024-12-15 00:07:43,501 DEBUG    root            Chosen display Format:default
+2024-12-15 00:07:43,509 DEBUG    root            Chosen display Format:value(links.flatten(show="values",separator="
+"))
+2024-12-15 00:07:43,509 DEBUG    root            Chosen display Format:default
+2024-12-15 00:07:43,502 DEBUG    root            (gcloud.compute.project-info.describe) [rolandpeelen@gmail.com] does not have permission to access projects instance [tpcc-444519] (or it may not exist): Compute Engine API has not been used in project tpcc-444519 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=tpcc-444519 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. This command is authenticated as rolandpeelen@gmail.com which is the active account specified by the [core/account] property.
+Google developers console API activation
+https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=tpcc-444519
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: googleapis.com
+  metadatas:
+    consumer: projects/tpcc-444519
+    service: compute.googleapis.com
+  reason: SERVICE_DISABLED
+Traceback (most recent call last):
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 998, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 843, in Run
+    resources = command_instance.Run(args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/surface/compute/project_info/describe.py", line 37, in Run
+    return client.MakeRequests([(client.apitools_client.projects, 'Get',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/api_lib/compute/client_adapter.py", line 128, in MakeRequests
+    objects = list(
+              ^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/api_lib/compute/request_helper.py", line 321, in MakeRequests
+    responses, new_errors = single_request_helper.MakeSingleRequest(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/api_lib/compute/single_request_helper.py", line 69, in MakeSingleRequest
+    response = getattr(service, method)(request=request_body)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/generated_clients/apis/compute/v1/compute_v1_client.py", line 11034, in Get
+    return self._RunMethod(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/third_party/apitools/base/py/base_api.py", line 744, in _RunMethod
+    http_response = http_wrapper.MakeRequest(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/third_party/apitools/base/py/http_wrapper.py", line 348, in MakeRequest
+    return _MakeRequestNoRetry(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/third_party/apitools/base/py/http_wrapper.py", line 406, in _MakeRequestNoRetry
+    check_response_func(response)
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/api_lib/util/apis.py", line 231, in _CheckResponse
+    _CheckForApiEnablementError(response_as_error)
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/api_lib/util/apis.py", line 197, in _CheckForApiEnablementError
+    PromptToEnableApi(*enablement_info)
+  File "/Users/rwjpeelen/Downloads/google-cloud-sdk/lib/googlecloudsdk/api_lib/util/apis.py", line 180, in PromptToEnableApi
+    raise exception
+googlecloudsdk.api_lib.util.exceptions.HttpException: [rolandpeelen@gmail.com] does not have permission to access projects instance [tpcc-444519] (or it may not exist): Compute Engine API has not been used in project tpcc-444519 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=tpcc-444519 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. This command is authenticated as rolandpeelen@gmail.com which is the active account specified by the [core/account] property.
+Google developers console API activation
+https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=tpcc-444519
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: googleapis.com
+  metadatas:
+    consumer: projects/tpcc-444519
+    service: compute.googleapis.com
+  reason: SERVICE_DISABLED
+2024-12-15 00:07:43,511 ERROR    root            (gcloud.compute.project-info.describe) [rolandpeelen@gmail.com] does not have permission to access projects instance [tpcc-444519] (or it may not exist): Compute Engine API has not been used in project tpcc-444519 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=tpcc-444519 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. This command is authenticated as rolandpeelen@gmail.com which is the active account specified by the [core/account] property.
+Google developers console API activation
+https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=tpcc-444519
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: googleapis.com
+  metadatas:
+    consumer: projects/tpcc-444519
+    service: compute.googleapis.com
+  reason: SERVICE_DISABLED
+2024-12-15 00:07:43,511 INFO     root            [compute project-info describe --quiet] has failed
+
+2024-12-15 00:07:43,511 INFO     ___FILE_ONLY___ Not setting default zone/region (this feature makes it easier to use
+[gcloud compute] by setting an appropriate default value for the
+--zone and --region flag).
+See https://cloud.google.com/compute/docs/gcloud-compute section on how to set
+default compute region and zone manually. If you would like [gcloud init] to be
+able to do this for you the next time you run it, make sure the
+Compute Engine API is enabled for your project on the
+https://console.developers.google.com/apis page.
+
+
+2024-12-15 00:07:43,512 DEBUG    root            Executing command: ['/Users/rwjpeelen/Downloads/google-cloud-sdk/bin/gsutil', 'config', '-n', '-o', '/Users/rwjpeelen/.boto']
+2024-12-15 00:07:45,684 DEBUG    ___FILE_ONLY___ 
+2024-12-15 00:07:45,684 DEBUG    ___FILE_ONLY___ This command will create a boto config file at /Users/rwjpeelen/.boto
+containing your credentials, based on your responses to the following
+questions.
+
+Boto config file "/Users/rwjpeelen/.boto" created. If you need to use
+a proxy to access the Internet please see the instructions in that
+file.
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ Created a default .boto configuration file at [/Users/rwjpeelen/.boto]. See this file and
+[https://cloud.google.com/storage/docs/gsutil/commands/config] for more
+information about configuring Google Cloud Storage.
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ The Google Cloud CLI is configured and ready to use!
+
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ * Commands that require authentication will use rolandpeelen@gmail.com by default
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ * Commands will reference project `tpcc-444519` by default
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ Run `gcloud help config` to learn how to change individual settings
+
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ This gcloud configuration is called [default]. You can create additional configurations if you work with multiple accounts and/or projects.
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ Run `gcloud topic configurations` to learn more.
+
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ Some things to try next:
+
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ * Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ * Run `gcloud topic --help` to learn about advanced features of the CLI like arg files and output formatting
+
+2024-12-15 00:07:45,684 INFO     ___FILE_ONLY___ * Run `gcloud cheat-sheet` to see a roster of go-to `gcloud` commands.
+
+2024-12-15 00:07:45,685 DEBUG    root            Chosen display Format:default
+2024-12-15 00:07:45,685 INFO     root            Display format: "default"
