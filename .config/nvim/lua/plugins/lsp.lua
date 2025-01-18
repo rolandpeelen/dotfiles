@@ -23,6 +23,7 @@ return {
 					"bashls",
 					"elixirls",
 					"tailwindcss",
+					"texlab",
 				},
 			})
 		end,
@@ -32,6 +33,9 @@ return {
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			lspconfig.texlab.setup({ capabilities = capabilities })
+
 			lspconfig.zls.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({ capabilities = capabilities })
@@ -64,6 +68,23 @@ return {
 
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
+				-- other options
+				init_options = {
+					userLanguages = {},
+				},
+				filetypes = {
+					"css",
+					"scss",
+					"sass",
+					"html",
+					"reason",
+					"reasonml",
+					"rescript",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+				},
 			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,

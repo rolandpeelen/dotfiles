@@ -60,7 +60,7 @@ alias gstp='git stash pop'
 alias gsts='git stash save'
 
 # Plugins
-plugins=(git fzf-tab ssh-agent)
+plugins=(git fzf-tab ssh-agent web-search)
 eval `keychain --eval --agents ssh --inherit any id_rsa &> /dev/null`
 
 # Enable Tmux  Popup for fzf-tab
@@ -120,10 +120,14 @@ export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:$PATH"
 # Re-export tty so gpg works
 export GPG_TTY=$(tty)
 
-source $ZSH/oh-my-zsh.sh
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/rwjpeelen/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rwjpeelen/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/rwjpeelen/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rwjpeelen/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+#     export TERM=xterm-256color
+# fi
+#
+source $ZSH/oh-my-zsh.sh
