@@ -84,8 +84,9 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
 ## Brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 . /opt/homebrew/share/zsh/site-functions
+
 
 
 # For normal llvm

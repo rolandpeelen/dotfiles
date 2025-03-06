@@ -21,7 +21,6 @@ return {
 					"sqls",
 					"cssls",
 					"bashls",
-					"elixirls",
 					"tailwindcss",
 					"texlab",
 				},
@@ -40,7 +39,28 @@ return {
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({ capabilities = capabilities })
 			lspconfig.sqls.setup({ capabilities = capabilities })
-			lspconfig.rescriptls.setup({ capabilities = capabilities })
+			lspconfig.rescriptls.setup({
+				capabilities = capabilities,
+				settings = {
+					extensionConfiguration = {
+						allowBuiltInFormatter = true,
+						askToStartBuild = false,
+						cache = {
+							projectConfig = {
+								enabled = true,
+							},
+						},
+						codeLens = true,
+						incrementalTypechecking = {
+							acrossFiles = true,
+							enabled = true,
+						},
+						inlayHints = {
+							enable = true,
+						},
+					},
+				},
+			})
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				settings = {
@@ -90,12 +110,6 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.hls.setup({ capabilities = capabilities })
-			lspconfig.elixirls.setup({
-				cmd = { "/Users/rwjpeelen/.local/share/nvim/mason/bin/elixir-ls" },
-				filetypes = { "ex", "exs", "elixir" },
-				root_dir = lspconfig.util.root_pattern("mix.exs"),
-				capabilties = capabilities,
-			})
 			lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.bashls.setup({ capabilities = capabilities })
 			lspconfig.ocamllsp.setup({ capabilities = capabilities })
