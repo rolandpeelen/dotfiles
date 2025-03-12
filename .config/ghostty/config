@@ -4,8 +4,10 @@ font-size = 13
 shell-integration = "zsh"
 shell-integration-features = true
 
-macos-titlebar-style = "transparent"
-macos-non-native-fullscreen = "visible-menu"
+# macos-titlebar-style = "transparent"
+# macos-non-native-fullscreen = "visible-menu"
+macos-non-native-fullscreen = true
+window-padding-y = 25,0
 keybind = global:shift+escape=toggle_visibility
 
 window-colorspace="display-p3"

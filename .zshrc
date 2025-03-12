@@ -18,7 +18,9 @@ killAll () {
   ps aux | grep $1 | awk '{print $2}' | xargs kill -9
 }
 
+# Ghostty
 alias ghostty="/Applications/Ghostty.app/Contents/MacOS/ghostty"
+alias copy-terminal-info='function _copy_terminfo() { infocmp -x | ssh $1 -- tic -x -; }; _copy_terminfo'
 
 # ----------------------
 # Git Aliases
