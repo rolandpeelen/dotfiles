@@ -45,6 +45,10 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
 
+" Map :cnext and :cprev to leader shortcuts
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprev<CR>
+
 augroup YankHighlight
         autocmd!
         autocmd TextYankPost * silent! lua vim.highlight.on_yank()

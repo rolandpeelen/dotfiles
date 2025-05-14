@@ -1,5 +1,4 @@
 return {
-	{ "ahrefs/vim-styled-ppx" },
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -15,29 +14,82 @@ return {
 					"lua_ls",
 					"pylsp",
 					"rescriptls",
-					"rust_analyzer@2024-10-21",
-					"ts_ls",
 					"hls",
 					"sqls",
 					"cssls",
 					"bashls",
 					"tailwindcss",
-					"texlab",
 				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		config = function(_, opts)
+		dependencies = { "saghen/blink.cmp" },
+		config = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = {
+				textDocument = {
+					foldingRange = {
+						dynamicRegistration = false,
+						lineFoldingOnly = true,
+					},
+				},
+			}
+
+			capabilities = require("blink.cmp")
+				.get_lsp_capabilities(capabilities)
 
 			lspconfig.texlab.setup({ capabilities = capabilities })
 
 			lspconfig.zls.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
-			lspconfig.pylsp.setup({ capabilities = capabilities })
+
+			local venv_path = os.getenv("VIRTUAL_ENV")
+			local py_path = nil
+			-- decide which python executable to use for mypy
+			if venv_path ~= nil then
+				py_path = venv_path .. "/bin/python3"
+			else
+				py_path = vim.g.python3_host_prog
+			end
+
+			lspconfig.pylsp.setup({
+				settings = {
+					pylsp = {
+						plugins = {
+							-- formatter options
+							black = { enabled = true },
+							autopep8 = { enabled = false },
+							yapf = { enabled = false },
+							-- linter options
+							pylint = {
+								enabled = true,
+								executable = "pylint",
+							},
+							ruff = { enabled = false },
+							pyflakes = { enabled = false },
+							pycodestyle = { enabled = false },
+							-- type checker
+							pylsp_mypy = {
+								enabled = true,
+								overrides = { "--python-executable", py_path, true },
+								report_progress = true,
+								live_mode = false,
+							},
+							-- auto-completion options
+							jedi_completion = { fuzzy = true },
+							-- import sorting
+							isort = { enabled = true },
+						},
+					},
+				},
+				flags = {
+					debounce_text_changes = 200,
+				},
+				capabilities = capabilities,
+			})
+
 			lspconfig.sqls.setup({ capabilities = capabilities })
 			lspconfig.rescriptls.setup({
 				capabilities = capabilities,
@@ -117,7 +169,6 @@ return {
 				filetypes = { "swift" },
 				capabilities = capabilities,
 			})
-			lspconfig.ocamllsp.mason = false
 
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "ge", vim.diagnostic.open_float, {})

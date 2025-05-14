@@ -1,1 +1,1 @@
-return {"godlygeek/tabular"}
+return { "godlygeek/tabular" }

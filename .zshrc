@@ -26,6 +26,7 @@ alias copy-terminal-info='function _copy_terminfo() { infocmp -x | ssh $1 -- tic
 # Git Aliases
 # ----------------------
 alias tma='tmux attach -t'
+alias tmf='tmux new-session -t'
 alias ga='git add'
 alias gaa='git add .'
 alias gaaa='git add --all'
@@ -76,9 +77,6 @@ export EDITOR="nvim"
 export HASKELL_BIN=/Users/rwjpeelen/.local/bin
 export PATH=$PATH:$HASKELL_BIN
 [ -f "/Users/rwjpeelen/.ghcup/env" ] && source "/Users/rwjpeelen/.ghcup/env" # ghcup-env
-
-## opam configuration
-[[ ! -r /Users/rwjpeelen/.opam/opam-init/init.zsh ]] || source /Users/rwjpeelen/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 ## rust
 source $HOME/.cargo/env # Rust env
@@ -134,3 +132,27 @@ if [ -f '/Users/rwjpeelen/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then
 # fi
 #
 source $ZSH/oh-my-zsh.sh
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# dune
+source $HOME/.local/share/dune/env/env.zsh
+
+# Just
+# # Needed for just autocomplete, but will pull in all of brew
+# https://github.com/casey/just#shell-completion-scripts
+# Init Homebrew, which adds environment variables
+eval "$(brew shellenv)"
+# Add Homebrew's site-functions to fpath
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+
+# Needed for autosuggestions (does compinit)
+source $ZSH/oh-my-zsh.sh
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/Users/rwjpeelen/.opam/opam-init/init.zsh' ]] || source '/Users/rwjpeelen/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration

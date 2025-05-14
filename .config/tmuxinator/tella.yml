@@ -1,0 +1,37 @@
+# /Users/rwjpeelen/.config/tmuxinator/tella-frontend.yml
+
+name: tella
+root: ~/Git/tella/tella-fusion
+
+windows:
+  - editor:
+      layout: main-vertical
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - vim
+  - frontend:
+      layout: main-vertical
+      root: ./packages/core/webapp
+      panes:
+        - Rewatch: 
+          - just dev-reason
+        - Next: 
+          - just dev-next
+        - Tailwind: 
+          - just dev-css
+        - Wasm Bindings: 
+          - just dev-wasm-bindings
+  - backend:
+      layout: main-vertical
+      panes:
+        - Instant:
+          - just instant dev
+        - Temporal Worker:
+          - just temporal worker-dev
+  - services:
+      layout: main-vertical
+      panes:
+        - Temporal Server:
+          - just temporal server
