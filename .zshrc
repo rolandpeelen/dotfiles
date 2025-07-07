@@ -1,5 +1,5 @@
 #lis Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH=/Users/rwjpeelen/.oh-my-zsh
 
 ZSH_THEME="agnoster"
 COMPLETION_WAITING_DOTS="true"
@@ -84,6 +84,7 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
 ## Brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 . /opt/homebrew/share/zsh/site-functions
 
@@ -130,8 +131,6 @@ if [ -f '/Users/rwjpeelen/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then
 # if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
 #     export TERM=xterm-256color
 # fi
-#
-source $ZSH/oh-my-zsh.sh
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # dune
@@ -156,3 +155,9 @@ source $ZSH/oh-my-zsh.sh
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/rwjpeelen/.opam/opam-init/init.zsh' ]] || source '/Users/rwjpeelen/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+
+# Tella specific stuff
+function ffmpeg_av_mux() {
+  ffmpeg -i $1 -i $2 -c copy -map 0:a -map 1:v -shortest $3
+}

@@ -12,12 +12,12 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = {
 				["<CR>"] = { "accept", "fallback" },
-				["<Tab>"] = {
+				["<C-j>"] = {
 					"select_next",
 					"snippet_forward",
 					"fallback",
 				},
-				["<S-Tab>"] = {
+				["<C-k>"] = {
 					"select_prev",
 					"snippet_backward",
 					"fallback",

@@ -28,6 +28,7 @@ return {
 		dependencies = { "saghen/blink.cmp" },
 		config = function()
 			local lspconfig = require("lspconfig")
+
 			local capabilities = {
 				textDocument = {
 					foldingRange = {
@@ -37,8 +38,7 @@ return {
 				},
 			}
 
-			capabilities = require("blink.cmp")
-				.get_lsp_capabilities(capabilities)
+			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 			lspconfig.texlab.setup({ capabilities = capabilities })
 
@@ -113,6 +113,7 @@ return {
 					},
 				},
 			})
+
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				settings = {
@@ -138,8 +139,10 @@ return {
 				},
 			})
 
+			local tailwindCapabilities = capabilities
+			tailwindCapabilities.textDocument.definition = nil
 			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
+				capabilities = tailwindCapabilities,
 				-- other options
 				init_options = {
 					userLanguages = {},
@@ -151,6 +154,7 @@ return {
 					"html",
 					"reason",
 					"reasonml",
+					"reason-ml",
 					"rescript",
 					"javascript",
 					"javascriptreact",
