@@ -25,7 +25,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "saghen/blink.cmp" },
+		dependencies = { "saghen/blink.cmp", "stevearc/conform.nvim" },
 		config = function()
 			local lspconfig = require("lspconfig")
 
@@ -39,8 +39,25 @@ return {
 			}
 
 			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+			local conform = require("conform")
+			local util = require("lspconfig.util")
+
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "ge", vim.diagnostic.open_float, {})
+			vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, {})
+			vim.keymap.set("n", "gf", vim.lsp.buf.format, {})
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<CR>", vim.lsp.buf.hover, {})
 
 			lspconfig.texlab.setup({ capabilities = capabilities })
+
+			lspconfig.sourcekit.setup({
+				capabilities = capabilities,
+				root_dir = util.root_pattern("Package.swift", "buildServer.json", "compile_commands.json", ".git"),
+
+				vim.keymap.set("n", "gf", conform.format, {}),
+			})
 
 			lspconfig.zls.setup({ capabilities = capabilities })
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
@@ -169,18 +186,6 @@ return {
 			lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.bashls.setup({ capabilities = capabilities })
 			lspconfig.ocamllsp.setup({ capabilities = capabilities })
-			lspconfig.swift_mesonls.setup({
-				filetypes = { "swift" },
-				capabilities = capabilities,
-			})
-
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "ge", vim.diagnostic.open_float, {})
-			vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, {})
-			vim.keymap.set("n", "gf", vim.lsp.buf.format, {})
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<CR>", vim.lsp.buf.hover, {})
 		end,
 	},
 }

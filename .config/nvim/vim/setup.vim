@@ -14,7 +14,7 @@ set number
 set ignorecase
 set smartcase
 set numberwidth=4
-set colorcolumn=80
+set colorcolumn=110
 set novisualbell
 set noerrorbells
 set nohidden
