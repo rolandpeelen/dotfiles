@@ -14,7 +14,7 @@
 [user]
 	name = Roland Peelen
 	email = rolandpeelen@gmail.com
-	signingkey = B1EE26699E316CFA
+	signingkey = E4FD3A3A9BDE4CE4
 [diff]
 	algorithm = histogram
 	colorMoved = plain

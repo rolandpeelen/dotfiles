@@ -25,7 +25,7 @@ done
 ## ----------------------------------------------------------------------------
 ## Utils
 ## ---------------------------------------------------------------------------- 
-brews="asdf curl git neovim llvm openssl ripgrep sourcetree tmux tmuxinator
+brews="asdf curl git neovim llvm openssl ripgrep tmux tmuxinator
 yabai zsh difftastic mkcert pwgen gpg keychain"
 for b in $brews ; do
         echo "Installing: ${b}"
@@ -35,9 +35,8 @@ done
 ## ----------------------------------------------------------------------------
 ## Casks
 ## ----------------------------------------------------------------------------
-casks="dropbox google-chrome iterm2 karabiner-elements linear loom numi
-postgres-unofficial raycast sizeup signal slack spotify postgres brave-browser
-discord docker postico"
+casks="dropbox google-chrome ghostty karabiner-elements linear numi
+postgres-unofficial raycast signal slack spotify postgres docker postico"
 
 for c in $casks ; do
         echo "Installing Cask: ${c}"

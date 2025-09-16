@@ -76,6 +76,7 @@ export EDITOR="nvim"
 ## Haskell
 export HASKELL_BIN=/Users/rwjpeelen/.local/bin
 export PATH=$PATH:$HASKELL_BIN
+[ -f "/Users/rwjpeelen/.ghcup/env" ] && source "/Users/rwjpeelen/.ghcup/env" # ghcup-env
 
 ## rust
 source $HOME/.cargo/env # Rust env
@@ -160,21 +161,3 @@ source $ZSH/oh-my-zsh.sh
 function ffmpeg_av_mux() {
   ffmpeg -i $1 -i $2 -c copy -map 0:a -map 1:v -shortest $3
 }
-
-[ -f "/Users/rwjpeelen/.ghcup/env" ] && . "/Users/rwjpeelen/.ghcup/env" # ghcup-env
-# bun completions
-[ -s "/Users/rwjpeelen/.bun/_bun" ] && source "/Users/rwjpeelen/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# llvm
-# If you need to have llvm first in your PATH, run:
-  echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
-
-#For compilers to find llvm you may need to set:
-  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

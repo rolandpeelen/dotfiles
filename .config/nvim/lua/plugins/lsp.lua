@@ -13,7 +13,6 @@ return {
 					"zls",
 					"lua_ls",
 					"pylsp",
-					"rescriptls",
 					"hls",
 					"sqls",
 					"cssls",
@@ -42,14 +41,6 @@ return {
 			local conform = require("conform")
 			local util = require("lspconfig.util")
 
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "ge", vim.diagnostic.open_float, {})
-			vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, {})
-			vim.keymap.set("n", "gf", vim.lsp.buf.format, {})
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<CR>", vim.lsp.buf.hover, {})
-
 			lspconfig.texlab.setup({ capabilities = capabilities })
 
 			lspconfig.sourcekit.setup({
@@ -71,6 +62,7 @@ return {
 				py_path = vim.g.python3_host_prog
 			end
 
+			lspconfig.sourcekit.setup({ capabilities = capabilities })
 			lspconfig.pylsp.setup({
 				settings = {
 					pylsp = {
@@ -186,6 +178,15 @@ return {
 			lspconfig.cssls.setup({ capabilities = capabilities })
 			lspconfig.bashls.setup({ capabilities = capabilities })
 			lspconfig.ocamllsp.setup({ capabilities = capabilities })
+
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "ge", vim.diagnostic.open_float, {})
+			vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, {})
+			vim.keymap.set("n", "gf", vim.lsp.buf.format, {})
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<CR>", vim.lsp.buf.hover, {})
+
 		end,
 	},
 }
