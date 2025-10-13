@@ -1,3 +1,5 @@
+Just 5 `mappend` Just 4
+Just 5 <*> Just 4
 :t sequence
 sequence Just 5 Just 5
 Just 5 <*> Just 5

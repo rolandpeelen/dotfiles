@@ -37,12 +37,12 @@
                     },
                     "simple_modifications": [
                         {
-                            "from": { "key_code": "grave_accent_and_tilde" },
-                            "to": [{ "key_code": "non_us_backslash" }]
-                        },
-                        {
                             "from": { "key_code": "non_us_backslash" },
                             "to": [{ "key_code": "grave_accent_and_tilde" }]
+                        },
+                        {
+                            "from": { "key_code": "grave_accent_and_tilde" },
+                            "to": [{ "key_code": "non_us_backslash" }]
                         }
                     ]
                 }
@@ -65,14 +65,6 @@
                 {
                     "from": { "key_code": "right_option" },
                     "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
-                },
-                {
-                    "from": { "key_code": "non_us_backslash" },
-                    "to": [{ "key_code": "grave_accent_and_tilde" }]
-                },
-                {
-                    "from": { "key_code": "grave_accent_and_tilde" },
-                    "to": [{ "key_code": "non_us_backslash" }]
                 }
             ],
             "virtual_hid_keyboard": {

@@ -7,10 +7,10 @@ shell-integration-features = true
 # macos-titlebar-style = "transparent"
 # macos-non-native-fullscreen = "visible-menu"
 macos-non-native-fullscreen = true
-window-padding-y = 30,0
+window-padding-y = 35,0
 keybind = global:shift+escape=toggle_visibility
 
 window-colorspace="display-p3"
 
-theme="Catppuccin Mocha"
+theme="Catppuccin Frappe"
 custom-shader="./shader.glsl"

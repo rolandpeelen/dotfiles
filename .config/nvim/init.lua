@@ -12,5 +12,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.cmd("source ~/.config/nvim/vim/winmove.vim")
-vim.cmd("source ~/.config/nvim/vim/setup.vim")
+
 require("lazy").setup("plugins")
+require("config.global")
+require("config.keybindings")
+require("config.prettier")
+require("config.autocommands")
+
