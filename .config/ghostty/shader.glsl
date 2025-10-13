@@ -33,7 +33,7 @@ float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
 }
 
 float getSdfParallelogram(in vec2 p, in vec2 v0, in vec2 v1, in vec2 v2, in vec2 v3) {
-    float s = 10.0;
+    float s = 50.0;
     float d = dot(p - v0, p - v0);
 
     d = seg(p, v0, v3, s, d);
@@ -74,8 +74,8 @@ const vec4 TRAIL_COLOR = vec4(1.0, 1.0, 1.0, 1.0); // white
 const vec4 CURRENT_CURSOR_COLOR = TRAIL_COLOR;
 const vec4 PREVIOUS_CURSOR_COLOR = TRAIL_COLOR;
 const vec4 TRAIL_COLOR_ACCENT = vec4(1.0, 1.0, 1.0, 1.0); // white
-const float DURATION = 0.5;
-const float OPACITY = .1;
+const float DURATION = 0.25;
+const float OPACITY = .05;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {

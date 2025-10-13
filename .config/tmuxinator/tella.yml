@@ -16,11 +16,9 @@ windows:
       root: ./packages/core/webapp
       panes:
         - Rewatch: 
-          - just dev-reason
+          - just dev-rescript
         - Next: 
-          - just dev-next
-        - Tailwind: 
-          - just dev-css
+          - bun next dev --turbo
         - Wasm Bindings: 
           - just dev-wasm-bindings
   - backend:
