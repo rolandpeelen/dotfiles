@@ -1,6 +1,6 @@
 return {
 	{
-		"tpope/vim-fugitive",
+		"airblade/vim-gitgutter",
 	},
 	{
 		"NeogitOrg/neogit",

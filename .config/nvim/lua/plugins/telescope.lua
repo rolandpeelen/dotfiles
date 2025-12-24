@@ -26,7 +26,7 @@ return {
 			require("telescope").setup("fzf")
 			local builtin = require("telescope.builtin")
 			-- Trying overriding \f to \gf to show git files - not often I'm looking through files not version controlled
-			vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+			-- vim.keymap.set("n", "<leader>f", builtin.find_files, {})
 			-- vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
 			-- vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
 			vim.keymap.set("n", "<leader>s", builtin.git_status, {})

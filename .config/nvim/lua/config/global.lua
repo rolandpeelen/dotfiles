@@ -28,7 +28,8 @@ vim.opt.titlestring = "VIM: %-t %y %a%r%m"
 vim.opt.titlelen = 70
 vim.opt.scrolloff = 25
 vim.opt.relativenumber = true
-
+vim.opt.updatetime=100
+-- vim.opt.signcolumn=
 
 -- true color
 if vim.fn.has("nvim") == 1 then

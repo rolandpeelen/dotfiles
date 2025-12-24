@@ -82,7 +82,7 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "conform", "rust_analyzer", "sourcekit",  })
+			vim.lsp.enable({ "conform", "rust_analyzer", "sourcekit" })
 
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "ge", vim.diagnostic.open_float, {})

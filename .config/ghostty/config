@@ -12,5 +12,6 @@ keybind = global:shift+escape=toggle_visibility
 
 window-colorspace="display-p3"
 
-theme="Catppuccin Frappe"
+theme="Catppuccin Mocha"
 custom-shader="./shader.glsl"
+keybind = shift+enter=text:\x1b\r
